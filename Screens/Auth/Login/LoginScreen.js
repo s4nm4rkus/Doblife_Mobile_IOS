@@ -22,6 +22,8 @@ import {
 } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { useDispatch } from "react-redux";
+import { reset, setIsVisible } from "../../../features/auth/authSlice";
 import styles from "./login.style";
 import ModalComponent from "./modal/ModalComponent";
 import LoginLogo from "../../../assets/login-logo.png";
@@ -30,6 +32,7 @@ const LoginScreen = ({ navigation }) => {
   const [emailOrMobile, setEmailOrMobile] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -37,6 +40,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleGoToRegistration = () => {
     dispatch(reset());
+    // console.log(navigation);
     navigation.navigate("Register");
   };
 
@@ -146,10 +150,10 @@ const LoginScreen = ({ navigation }) => {
             />
           </View>
 
-          {/* <ModalComponent
+          <ModalComponent
             isCanceled={() => dispatch(setIsVisible(false))}
             email={emailOrMobile}
-          /> */}
+          />
         </KeyboardAvoidingView>
       </SafeAreaView>
     </TouchableWithoutFeedback>

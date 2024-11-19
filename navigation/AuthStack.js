@@ -1,0 +1,52 @@
+import React, { useContext } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import LoginScreen from "../Screens/Auth/Login/LoginScreen";
+import RegistrationScreen from "../Screens/Auth/Register/RegistrationScreen";
+// import AccountDeletedScreen from "../screens/Auth/AccountDelete/AccountDeletedScreen";
+// import TermsOfServiceScreen from "../screens/TermsOfService/TermsOfServiceScreen";
+// import PrivacyPolicyScreen from "../screens/PrivacyPolicy/PrivacyPolicyScreen";
+// import FacebookLoginScreen from "../screens/Auth/FacebookLogin/FacebookLoginScreen";
+
+const Stack = createStackNavigator();
+
+const AuthStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={RegistrationScreen}
+        options={{ headerShown: false }}
+      />
+      {/* <Stack.Screen
+        name="AccountDeleted"
+        component={AccountDeletedScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="TermsOfService"
+        component={TermsOfServiceScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="PrivacyPolicy"
+        component={PrivacyPolicyScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="FacebookLogin"
+        component={FacebookLoginScreen}
+        options={{ headerShown: false }}
+      /> */}
+    </Stack.Navigator>
+  );
+};
+
+export default AuthStack;

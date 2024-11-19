@@ -2,9 +2,11 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
 
-// import { Provider } from "react-redux";
-// import { store } from "./store";
+import { Provider } from "react-redux";
+import { store } from "./store";
 import LoginScreen from "./Screens/Auth/Login/LoginScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import AuthStack from "./navigation/AuthStack";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -29,11 +31,14 @@ export default function App() {
   }
 
   return (
-    // <Provider store={store}>
-    //   </Provider>
-    <View style={styles.container}>
-      <LoginScreen />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <View style={styles.container}>
+          {/* <AuthStack /> */}
+          <LoginScreen />
+        </View>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

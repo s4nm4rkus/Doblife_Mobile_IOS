@@ -8,6 +8,7 @@ import {
   FONTSIZE,
   HEIGHT,
   MARGIN,
+  SHADOWS,
 } from "../../../constants/theme";
 import { StyleSheet } from "react-native";
 
@@ -27,6 +28,13 @@ const styles = StyleSheet.create({
   },
 
   logoIcon: {
+    shadowColor: "#444444",
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 1,
     width: hp(50),
     height: hp(5.45),
   },
@@ -178,7 +186,7 @@ const styles = StyleSheet.create({
     marginTop: hp(3.12),
     height: hp(8.35),
     borderRadius: 5.5,
-    borderWidth: 1,
+    borderWidth: 0.5,
     marginHorizontal: wp(10.4),
     justifyContent: "center",
     alignItems: "center",
@@ -186,6 +194,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderColor: "#0b0b0b",
     zIndex: 1,
+    shadowColor: "#444444",
+    shadowOffset: {
+      width: 1,
+      height: 3,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
   },
 
   loginViaFacebookText: {

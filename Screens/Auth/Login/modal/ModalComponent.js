@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Modal } from "react-native";
 import styles from "./modal.style";
 import { useEffect } from "react";
-// import { isVisibleValue } from "../../../../features/auth/authSlice";
+import { isVisibleValue } from "../../../../features/auth/authSlice";
 import { useSelector } from "react-redux";
 
 const ModalComponent = ({ isCanceled, email }) => {
