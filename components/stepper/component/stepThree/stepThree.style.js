@@ -79,13 +79,15 @@ const styles = ScaledSheet.create({
   },
 
   bottomImageContainer: {
-    marginTop: hp(5.52),
+    position: "absolute",
+    top: "50%",
+    left: "-35",
+    opacity: 0.2,
+    zIndex: 0,
   },
 
   bottomImage: {
-    width: wp(101),
-    height: hp(44),
-    resizeMode: "stretch",
+    resizeMode: "contain",
   },
 
   passwordDescriptionText: {
@@ -97,6 +99,13 @@ const styles = ScaledSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: hp(5.9),
+  },
+  checkBox: {
+    marginRight: 10,
+    borderRadius: 3,
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "black",
   },
 
   termsTextContainer: {

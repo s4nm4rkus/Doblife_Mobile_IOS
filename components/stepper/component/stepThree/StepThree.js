@@ -25,7 +25,8 @@ import {
 import { COLORS } from "../../../../constants/theme.js";
 import { Feather } from "@expo/vector-icons";
 import LoadingOverlay from "../../../loading/LoadingOverlay";
-import CheckBox from "@react-native-community/checkbox";
+
+import { Checkbox } from "react-native-paper";
 
 const useFadeAnimation = (duration) => {
   const animatedValue = new Animated.Value(0);
@@ -225,11 +226,14 @@ const StepThree = ({ onStepComplete, navigation }) => {
             </View>
 
             <View style={styles.checkBoxContainer}>
-              <CheckBox
-                value={isChecked}
-                onChange={handleCheckboxChange}
-                tintColors={{ true: "black", false: "#c60404" }}
-              />
+              <View style={styles.checkBox}>
+                <Checkbox
+                  status={isChecked ? "checked" : "unchecked"}
+                  onPress={handleCheckboxChange}
+                  color="black"
+                  uncheckedColor="#c60404"
+                />
+              </View>
               <Text style={styles.checkBoxText}>
                 By proceeding, I agree to the Doblife's{" "}
                 <Text
