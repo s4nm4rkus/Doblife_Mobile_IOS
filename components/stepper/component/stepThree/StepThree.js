@@ -250,7 +250,7 @@ const StepThree = ({ onStepComplete, navigation }) => {
           </View>
           <RegisterFooter
             onPressNext={handleStepComplete}
-            onPressLogin={handleGoToLogin}
+            // onPressLogin={handleGoToLogin}
             text="Sign Up"
             isChecked={isChecked}
           />

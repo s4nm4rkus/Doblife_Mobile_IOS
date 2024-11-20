@@ -37,7 +37,7 @@ const useFadeAnimation = (duration) => {
 
 const StepTwo = ({ onStepComplete, navigation }) => {
   const dispatch = useDispatch();
-  const { login, loginWithFacebook } = useContext(AuthContext);
+  // const { login, loginWithFacebook } = useContext(AuthContext);
   const [activeTab, setActiveTab] = useState(signInTypeTabs[1]);
   const [emailOrMobile, setEmailOrMobile] = useState({
     email: "",
