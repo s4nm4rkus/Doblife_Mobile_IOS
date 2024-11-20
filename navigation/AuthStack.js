@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../Screens/Auth/Login/LoginScreen";
 import RegistrationScreen from "../Screens/Auth/Register/RegistrationScreen";
@@ -11,18 +12,19 @@ const Stack = createStackNavigator();
 
 const AuthStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Register"
-        component={RegistrationScreen}
-        options={{ headerShown: false }}
-      />
-      {/* <Stack.Screen
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegistrationScreen}
+          options={{ headerShown: false }}
+        />
+        {/* <Stack.Screen
         name="AccountDeleted"
         component={AccountDeletedScreen}
         options={{ headerShown: false }}
@@ -45,7 +47,8 @@ const AuthStack = () => {
         component={FacebookLoginScreen}
         options={{ headerShown: false }}
       /> */}
-    </Stack.Navigator>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

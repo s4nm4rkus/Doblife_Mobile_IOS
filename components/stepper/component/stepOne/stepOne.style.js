@@ -79,14 +79,15 @@ const styles = StyleSheet.create({
   },
 
   bottomImageContainer: {
-    marginTop: hp(7.2),
-    height: hp(35.9),
+    position: "absolute",
+    top: "50%",
+    left: "-35",
+    opacity: 0.2,
+    zIndex: 0,
   },
 
   bottomImage: {
-    width: wp(101),
-    height: hp(44),
-    resizeMode: "stretch",
+    resizeMode: "contain",
   },
 });
 

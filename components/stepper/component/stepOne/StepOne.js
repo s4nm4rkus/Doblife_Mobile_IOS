@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
+  KeyboardAvoidingView,
+  Platform,
   Image,
 } from "react-native";
 import styles from "./stepOne.style";
@@ -122,74 +124,82 @@ const StepOne = ({ onStepComplete, navigation }) => {
           Keyboard.dismiss();
         }}
       >
-        <View style={[styles.container]}>
-          <View style={styles.textInputsContainer}>
-            <View style={styles.firstnameInputContainer}>
-              <Text style={styles.textLabel}>Firstname</Text>
-              <View style={styles.inputContainer}>
-                <View style={styles.inputWrapper}>
-                  <TextInput
-                    style={styles.inInput}
-                    value={userData.firstname}
-                    onChangeText={(text) =>
-                      handleInputChange("firstname", text)
-                    }
-                    onFocus={() => removeFirstnameError()}
-                  />
+        <KeyboardAvoidingView
+          behavior="padding"
+          keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+          style={styles.container}
+        >
+          <View style={[styles.container]}>
+            <View style={styles.textInputsContainer}>
+              <View style={styles.firstnameInputContainer}>
+                <Text style={styles.textLabel}>Firstname</Text>
+                <View style={styles.inputContainer}>
+                  <View style={styles.inputWrapper}>
+                    <TextInput
+                      style={styles.inInput}
+                      value={userData.firstname}
+                      onChangeText={(text) =>
+                        handleInputChange("firstname", text)
+                      }
+                      onFocus={() => removeFirstnameError()}
+                    />
+                  </View>
+                </View>
+                {errors.firstname ? (
+                  <Text style={styles.errorText}>{errors.firstname}</Text>
+                ) : null}
+              </View>
+
+              <View style={styles.middlenameInputContainer}>
+                <Text style={styles.textLabel}>Middlename</Text>
+                <View style={styles.inputContainer}>
+                  <View style={styles.inputWrapper}>
+                    <TextInput
+                      style={styles.inInput}
+                      value={userData.middlename}
+                      onChangeText={(text) =>
+                        handleInputChange("middlename", text)
+                      }
+                    />
+                  </View>
                 </View>
               </View>
-              {errors.firstname ? (
-                <Text style={styles.errorText}>{errors.firstname}</Text>
-              ) : null}
-            </View>
 
-            <View style={styles.middlenameInputContainer}>
-              <Text style={styles.textLabel}>Middlename</Text>
-              <View style={styles.inputContainer}>
-                <View style={styles.inputWrapper}>
-                  <TextInput
-                    style={styles.inInput}
-                    value={userData.middlename}
-                    onChangeText={(text) =>
-                      handleInputChange("middlename", text)
-                    }
-                  />
+              <View style={styles.lastnameInputContainer}>
+                <Text style={styles.textLabel}>Lastname</Text>
+                <View style={styles.inputContainer}>
+                  <View style={styles.inputWrapper}>
+                    <TextInput
+                      style={styles.inInput}
+                      value={userData.lastname}
+                      onChangeText={(text) =>
+                        handleInputChange("lastname", text)
+                      }
+                      onFocus={() => removeLastnameError()}
+                    />
+                  </View>
                 </View>
+                {errors.lastname ? (
+                  <Text style={styles.errorText}>{errors.lastname}</Text>
+                ) : null}
               </View>
             </View>
 
-            <View style={styles.lastnameInputContainer}>
-              <Text style={styles.textLabel}>Lastname</Text>
-              <View style={styles.inputContainer}>
-                <View style={styles.inputWrapper}>
-                  <TextInput
-                    style={styles.inInput}
-                    value={userData.lastname}
-                    onChangeText={(text) => handleInputChange("lastname", text)}
-                    onFocus={() => removeLastnameError()}
-                  />
-                </View>
-              </View>
-              {errors.lastname ? (
-                <Text style={styles.errorText}>{errors.lastname}</Text>
-              ) : null}
-            </View>
-          </View>
-
-          <RegisterFooter
-            onPressNext={handleStepComplete}
-            text="Continue"
-            onPressLogin={handleGoToLogin}
-            isTextVisible={true}
-          />
-
-          <View style={styles.bottomImageContainer}>
-            <Image
-              source={require("../../../../assets/bottom-image.png")}
-              style={styles.bottomImage}
+            <RegisterFooter
+              onPressNext={handleStepComplete}
+              text="Continue"
+              onPressLogin={handleGoToLogin}
+              isTextVisible={true}
             />
+
+            <View style={styles.bottomImageContainer}>
+              <Image
+                source={require("../../../../assets/bottom-image.png")}
+                style={styles.bottomImage}
+              />
+            </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
       <Error />
     </>

@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: wp(10.4),
+    zIndex: 2,
   },
   navigationButton: {
     width: "100%",
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     marginTop: hp(2.35),
+    zIndex: 2,
   },
   questionText: {
     fontFamily: "RobotoRegular",
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
     color: "#1877f2",
     textDecorationLine: "underline",
     textDecorationColor: "#5198f5",
+    zIndex: 2,
   },
 });
 

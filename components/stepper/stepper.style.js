@@ -13,11 +13,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    marginTop: hp(5.75),
-    marginBottom: hp(3.35),
+    marginTop: hp(9.2),
+    marginBottom: hp(4.75),
   },
 
   logoIcon: {
+    shadowColor: "#444444",
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 1,
     width: hp(50),
     height: hp(5.45),
   },

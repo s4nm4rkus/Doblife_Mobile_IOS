@@ -24,6 +24,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { useDispatch } from "react-redux";
 import { reset, setIsVisible } from "../../../features/auth/authSlice";
+import RegistrationScreen from "../Register/RegistrationScreen";
 import styles from "./login.style";
 import ModalComponent from "./modal/ModalComponent";
 import LoginLogo from "../../../assets/login-logo.png";
@@ -40,7 +41,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleGoToRegistration = () => {
     dispatch(reset());
-    // console.log(navigation);
+    console.log(navigation);
     navigation.navigate("Register");
   };
 

@@ -1,10 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
-
+import AppNavigator from "./navigation/AppNavigator";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import LoginScreen from "./Screens/Auth/Login/LoginScreen";
+import RegistrationScreen from "./Screens/Auth/Register/RegistrationScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthStack from "./navigation/AuthStack";
 
@@ -32,21 +33,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <View style={styles.container}>
-          {/* <AuthStack /> */}
-          <LoginScreen />
-        </View>
-      </NavigationContainer>
+      <AuthStack />
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
