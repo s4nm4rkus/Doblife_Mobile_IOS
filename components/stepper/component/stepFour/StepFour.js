@@ -178,7 +178,7 @@ const StepFour = ({ navigation }) => {
             <OtpBox onOtpChange={handleOtpChange} />
             <RegisterFooter
               text="Confirm"
-              onPressLogin={handleGoToLogin}
+              // onPressLogin={handleGoToLogin}
               onPressNext={handleVerifyOtp}
             />
 

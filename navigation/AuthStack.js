@@ -12,43 +12,41 @@ const Stack = createStackNavigator();
 
 const AuthStack = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={RegistrationScreen}
-          options={{ headerShown: false }}
-        />
-        {/* <Stack.Screen
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={RegistrationScreen}
+        options={{ headerShown: false }}
+      />
+      {/* <Stack.Screen
         name="AccountDeleted"
         component={AccountDeletedScreen}
         options={{ headerShown: false }}
       /> */}
 
-        <Stack.Screen
-          name="TermsOfService"
-          component={TermsOfServiceScreen}
-          options={{ headerShown: false }}
-        />
+      <Stack.Screen
+        name="TermsOfService"
+        component={TermsOfServiceScreen}
+        options={{ headerShown: false }}
+      />
 
-        <Stack.Screen
-          name="PrivacyPolicy"
-          component={PrivacyPolicyScreen}
-          options={{ headerShown: false }}
-        />
+      <Stack.Screen
+        name="PrivacyPolicy"
+        component={PrivacyPolicyScreen}
+        options={{ headerShown: false }}
+      />
 
-        {/* <Stack.Screen
+      {/* <Stack.Screen
         name="FacebookLogin"
         component={FacebookLoginScreen}
         options={{ headerShown: false }}
       /> */}
-      </Stack.Navigator>
-    </NavigationContainer>
+    </Stack.Navigator>
   );
 };
 

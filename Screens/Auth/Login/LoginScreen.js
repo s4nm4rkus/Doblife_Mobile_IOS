@@ -29,14 +29,12 @@ import RegistrationScreen from "../Register/RegistrationScreen";
 import styles from "./login.style";
 import ModalComponent from "./modal/ModalComponent";
 import LoginLogo from "../../../assets/login-logo.png";
-// import { login } from "../../../services/auth";
 
 const LoginScreen = ({ navigation }) => {
   const [emailOrMobile, setEmailOrMobile] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState("");
-  // const { login, loginWithFacebook, forgotPassword, isLoading } =
-  //   useContext(AuthContext);
+  const { login, forgotPassword, isLoading } = useContext(AuthContext);
   const dispatch = useDispatch();
 
   const togglePasswordVisibility = () => {

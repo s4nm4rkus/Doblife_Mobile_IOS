@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
 import AppNavigator from "./navigation/AppNavigator";
+import { AuthProvider } from "./context/AuthContext";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import LoginScreen from "./Screens/Auth/Login/LoginScreen";
@@ -33,7 +34,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <AuthStack />
+      <AuthProvider>
+        <AppNavigator />
+      </AuthProvider>
     </Provider>
   );
 }

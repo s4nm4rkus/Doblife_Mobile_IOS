@@ -4,11 +4,10 @@
     "slug": "doblife-mobile-ios",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo-icon-01.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/login-logo.png",
+      "image": "./assets/splash.png",
       "resizedMode": "cover",
       "backgroundColor": "#ffffff"
     },
@@ -31,8 +30,6 @@
       }
     },
     "owner": "markusdev",
-    "plugins": [
-      "expo-secure-store"
-    ]
+    "plugins": ["expo-secure-store"]
   }
 }

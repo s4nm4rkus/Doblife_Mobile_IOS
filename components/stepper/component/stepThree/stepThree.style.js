@@ -99,6 +99,7 @@ const styles = ScaledSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: hp(5.9),
+    zIndex: 2,
   },
   checkBox: {
     marginRight: 10,

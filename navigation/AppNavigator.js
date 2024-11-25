@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { AuthContext } from "../context/AuthContext";
-// import AppStack from "./AppStack";
+import AppStack from "./AppStack";
 import AuthStack from "./AuthStack";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
