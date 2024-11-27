@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
 
   leagueAddressContainer: {
     marginBottom: hp(2.3),
-    marginLeft: wp(2.5),
+    marginLeft: wp(6),
   },
 
   addressText: {

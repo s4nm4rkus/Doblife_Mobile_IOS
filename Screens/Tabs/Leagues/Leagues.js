@@ -244,33 +244,27 @@ const Leagues = ({ navigation }) => {
 
   const onShare = async (capturedImages) => {
     try {
-      // Check if capturedImages is an array and contains at least one URI
       if (capturedImages && capturedImages.length > 0) {
         const options = {
-          title: "Share Image", // For iOS (optional)
-          message: "Check out this image!", // For Android and iOS
-          url: capturedImages[0], // Use the first image from the array
+          title: "Share Image",
+          message: "Check out this image!",
+          url: capturedImages[0],
         };
-
-        // Share the image (native Share API)
         const response = await Share.share(options);
 
         if (response.action === Share.sharedAction) {
-          // Action was shared successfully
           if (response.activityType) {
             console.log(`Shared with activity type: ${response.activityType}`);
           } else {
             console.log("Shared successfully!");
           }
         } else if (response.action === Share.dismissedAction) {
-          // Action was dismissed by the user
           console.log("Share dismissed.");
         }
       } else {
         console.error("No image to share.");
       }
     } catch (error) {
-      // Handle the error if sharing fails
       if (error.message !== "User did not share") {
         console.error("Failed to share:", error);
       }
@@ -318,29 +312,23 @@ const Leagues = ({ navigation }) => {
           </Text>
         </View>
       </View>
+
       <View style={styles.leagueAddressContainer}>
         <Text style={styles.addressText}>
           {item.location.barangay.name}, {item.location.city.name},{" "}
           {item.location.province.name}
         </Text>
-        <View style={styles.leagueAddressContainer}>
-          <Text style={styles.addressText}>
-            {item.location.barangay.name}, {item.location.city.name},{" "}
-            {item.location.province.name}
-          </Text>
-        </View>
-        {/* Uncomment if needed */}
-        {/* 
+      </View>
+      {/* Uncomment if needed */}
+      {/* 
         {!checkProfileIdExists(item) && (
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.joinNowContainer}
             onPress={() => handleJoinNow(item)}
           >
             <Text style={styles.joinNowText}>JOIN NOW</Text>
           </TouchableOpacity>
-        )}
-        */}
-      </View>
+        )} */}
 
       <View style={styles.cardFooter}>
         {/* <View>
@@ -689,34 +677,41 @@ const Leagues = ({ navigation }) => {
                         {moment(item.created_at).format("MMMM D")}
                       </Text>
                     </View>
-                    <ViewShot
-                      ref={viewShotRef1}
-                      options={{ format: "jpg", quality: 0.9 }}
-                    >
-                      <View style={styles.cardBody}>
-                        <View style={styles.leagueNameContainer}>
-                          <Text style={styles.leagueNameText}>
-                            {item.league.name}
-                          </Text>
-                        </View>
-                        <View style={styles.openingDateContainer}>
-                          <Text style={styles.openingDateText}>
-                            {moment(item.opening_date).format("MMM D | h:mm A")}
-                          </Text>
-                        </View>
-                        {(item.location.barangay.name ||
-                          item.location.city.name ||
-                          item.location.province.name) && (
-                          <View style={styles.leagueAddressContainer}>
-                            <Text style={styles.addressText}>
-                              {item.location.barangay.name},{" "}
-                              {item.location.city.name},{" "}
-                              {item.location.province.name}
-                            </Text>
-                          </View>
-                        )}
+                    <View ref={viewRef} style={styles.cardBody}>
+                      <View style={styles.leagueNameContainer}>
+                        <Text style={styles.leagueNameText}>
+                          {item.league.name}
+                        </Text>
                       </View>
-                    </ViewShot>
+                      <View style={styles.openingDateContainer}>
+                        <Text style={styles.openingDateText}>
+                          {moment(item.opening_date).format("MMM D | h:mm A")}
+                        </Text>
+                      </View>
+                    </View>
+                    <View style={styles.leagueAddressContainer}>
+                      <Text style={styles.addressText}>
+                        {item.location.barangay.name}, {item.location.city.name}
+                        , {item.location.province.name}
+                      </Text>
+                      <View style={styles.leagueAddressContainer}>
+                        <Text style={styles.addressText}>
+                          {item.location.barangay.name},{" "}
+                          {item.location.city.name},{" "}
+                          {item.location.province.name}
+                        </Text>
+                      </View>
+                      {/* Uncomment if needed */}
+                      {/* 
+                      {!checkProfileIdExists(item) && (
+                        <TouchableOpacity
+                          style={styles.joinNowContainer}
+                          onPress={() => handleJoinNow(item)}
+                        >
+                          <Text style={styles.joinNowText}>JOIN NOW</Text>
+                        </TouchableOpacity>
+                      )} */}
+                    </View>
                     <View style={styles.cardFooter}>
                       {/* <View>
                             <Text style={styles.reactsText}>0 Reacts ⋅ 0 Share</Text>
@@ -725,7 +720,7 @@ const Leagues = ({ navigation }) => {
                         style={styles.buttonsContainer}
                         onPress={captureImages}
                       >
-                        {/* <FontAwesomeIcon icon={faThumbsUp} size={hp(2.8)}/> */}
+                        {/* <FontAwesomeIcon icon={faThumbsUp} size={hp(2.8)} /> */}
                         <FontAwesomeIcon
                           icon={faShareFromSquare}
                           size={hp(2.8)}

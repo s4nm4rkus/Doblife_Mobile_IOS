@@ -37,6 +37,7 @@ import MyTeams from "../Menus/MyTeams/MyTeams";
 import MyLeagues from "../Menus/MyLeagues/MyLeagues";
 import Create from "../Tabs/Create/Create";
 import Players from "./Players/Players";
+import Teams from "./Teams/Teams";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
@@ -362,13 +363,13 @@ const MainScreen = ({ navigation }) => {
             headerShown: false,
           }}
         />
-        {/* <Tab.Screen
-      name="Teams"
-      component={Teams}
-      options={{
-        headerShown: false,
-      }}
-    />  */}
+        <Tab.Screen
+          name="Teams"
+          component={Teams}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Tab.Navigator>
 
       <BottomSheetModal

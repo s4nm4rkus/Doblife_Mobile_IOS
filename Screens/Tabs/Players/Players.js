@@ -14,16 +14,16 @@ import Header from "../../../components/header/Header";
 import { fetchProfiles } from "../../../api/profileApi";
 import { useMutation } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-// import {
-//   cityIDValue,
-//   leagueIDValue,
-//   maxAgeValue,
-//   maxHeightValue,
-//   minAgeValue,
-//   minHeightValue,
-//   naturePositionIDValue,
-//   secondaryPositionIDValue,
-// } from "../../../features/playersFilter/playersFilterSlice";
+import {
+  cityIDValue,
+  leagueIDValue,
+  maxAgeValue,
+  maxHeightValue,
+  minAgeValue,
+  minHeightValue,
+  naturePositionIDValue,
+  secondaryPositionIDValue,
+} from "../../../features/playersFilter/playersFilterSlice";
 import { AuthContext } from "../../../context/AuthContext";
 
 const profileImageUrl =
@@ -32,8 +32,8 @@ const profileImageUrl =
 const Players = ({ navigation }) => {
   const [search, setSearch] = useState(null);
   const { userToken } = useContext(AuthContext);
-  // const naturePositionID = useSelector(naturePositionIDValue);
-  // const secondaryPositionID = useSelector(secondaryPositionIDValue);
+  const naturePositionID = useSelector(naturePositionIDValue);
+  const secondaryPositionID = useSelector(secondaryPositionIDValue);
   const leagueID = useSelector(leagueIDValue);
   const cityID = useSelector(cityIDValue);
   const minAge = useSelector(minAgeValue);
