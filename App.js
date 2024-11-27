@@ -9,6 +9,15 @@ import LoginScreen from "./Screens/Auth/Login/LoginScreen";
 import RegistrationScreen from "./Screens/Auth/Register/RegistrationScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthStack from "./navigation/AuthStack";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export default function App() {
   const [loaded] = useFonts({
@@ -35,7 +44,9 @@ export default function App() {
   return (
     <Provider store={store}>
       <AuthProvider>
-        <AppNavigator />
+        <QueryClientProvider client={queryClient}>
+          <AppNavigator />
+        </QueryClientProvider>
       </AuthProvider>
     </Provider>
   );
