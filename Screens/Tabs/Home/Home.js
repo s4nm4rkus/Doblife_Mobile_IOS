@@ -16,9 +16,9 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import moment from "moment/moment";
-// import Carousel from "../../../components/common/cards/Carousel/Carousel";
+import Carousel from "../../../components/common/cards/Carousel/Carousel";
 import { Carousel as ReactCarousel } from "react-native-reanimated-carousel";
-// import NewUserModal from "../modal/NewUserModal";
+import NewUserModal from "../modal/NewUserModal";
 import Header from "../../../components/header/Header";
 import { useMutation } from "@tanstack/react-query";
 import { fetchLeagueMatchupsFeed } from "../../../api/leagueApi";
@@ -33,15 +33,15 @@ import FinishedLeagueCarousel from "./carousel/FinishedLeagueCarousel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 // import io from "socket.io-client";
 import Toast from "react-native-toast-message";
-// import SuccessJoinTeamModal from "../../../components/modals/successJoinTeam/SuccessJoinTeamModal";
+import SuccessJoinTeamModal from "../../../components/modals/successJoinTeam/SuccessJoinTeamModal";
 import { useDispatch, useSelector } from "react-redux";
-// import {
-//   isActivePlayerVisibleValue,
-//   isSuccessJoinTeamVisibleValue,
-//   setIsActivePlayerVisible,
-//   setIsSuccessJoinTeamVisible,
-// } from "../../../features/modal/modalSlice";
-// import ActivePlayerModal from "../../../components/modals/activePlayer/ActivePlayerModal";
+import {
+  isActivePlayerVisibleValue,
+  isSuccessJoinTeamVisibleValue,
+  setIsActivePlayerVisible,
+  setIsSuccessJoinTeamVisible,
+} from "../../../features/modal/modalSlice";
+import ActivePlayerModal from "../../../components/modals/activePlayer/ActivePlayerModal";
 import { isEmptyObject } from "../../../utils/helpers";
 
 const carouselData = [

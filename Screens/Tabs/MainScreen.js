@@ -29,7 +29,7 @@ import {
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import Court from "../../assets/icons/court.svg";
+import CourtIcon from "../../assets/icons/Court";
 
 import Home from "./Home/Home";
 import Leagues from "./Leagues/Leagues";
@@ -231,7 +231,7 @@ const MainScreen = ({ navigation }) => {
                                 alignItems: "center",
                               }}
                             >
-                              <Court
+                              <CourtIcon
                                 width={hp(4.3)}
                                 height={hp(3.5)}
                                 fill={
@@ -240,6 +240,7 @@ const MainScreen = ({ navigation }) => {
                                     : "#e19189"
                                 }
                               />
+
                               <Text
                                 style={{
                                   color: descriptor.navigation.isFocused()
@@ -317,7 +318,7 @@ const MainScreen = ({ navigation }) => {
           }
         }}
       >
-        {/* <Tab.Screen
+        <Tab.Screen
           name="Court"
           children={() => (
             <StackNavigator bottomSheetModalRef={bottomSheetModalRef} />
@@ -325,7 +326,7 @@ const MainScreen = ({ navigation }) => {
           options={{
             headerShown: false,
           }}
-        /> */}
+        />
 
         <Tab.Screen
           name="Leagues"
