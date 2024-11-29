@@ -1,11 +1,11 @@
 import { BASE_URL } from "../utils/config";
-import axios from 'axios';
+import axios from "axios";
 
 export const fetchBarangays = async (cityID) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/barangays`,
-    params: {city_id: cityID},
+    params: { city_id: cityID },
   };
 
   const response = await axios(config);

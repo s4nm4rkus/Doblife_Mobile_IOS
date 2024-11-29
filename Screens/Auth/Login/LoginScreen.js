@@ -19,6 +19,8 @@ import {
   Platform,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  FlatList,
+  StyleSheet,
 } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
@@ -47,6 +49,28 @@ const LoginScreen = ({ navigation }) => {
     navigation.navigate("Register");
   };
 
+  const [cities, setCities] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const response = await fetch("http://staging.doblife.com/api/cities");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setCities(data);
+        console.log("Cities fetched:", data);
+      } catch (err) {
+        setError(err.message);
+        console.error("Failed to fetch cities:", err.message);
+      }
+    };
+
+    fetchCities();
+  }, []);
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -55,6 +79,7 @@ const LoginScreen = ({ navigation }) => {
     >
       <SafeAreaView style={styles.container}>
         <StatusBar />
+
         <KeyboardAvoidingView
           behavior="padding"
           keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}

@@ -5,7 +5,7 @@ import { BASE_URL } from "../utils/config";
 const login = async (emailOrMobile, password) => {
   try {
     const response = await axios.post(
-      BASE_URL + "/login",
+      BASE_URL + "/auths/login",
       {
         emailOrMobile: emailOrMobile,
         password: password,
@@ -37,7 +37,7 @@ const register = async (
 ) => {
   try {
     const response = await axios.post(
-      BASE_URL + "/register",
+      BASE_URL + "/auths/register",
       {
         firstname: firstname,
         middlename: middlename,
@@ -66,7 +66,7 @@ const register = async (
 const requestOtp = async (identifier, value) => {
   try {
     const response = await axios.post(
-      BASE_URL + "/request_otp",
+      BASE_URL + "/auths/request_otp",
       {
         [identifier]: value,
       },
@@ -89,7 +89,7 @@ const requestOtp = async (identifier, value) => {
 const verifyOtp = async (identifier, value, otp) => {
   try {
     const response = await axios.post(
-      BASE_URL + "/verify_otp",
+      BASE_URL + "/auths/verify_otp",
       {
         [identifier]: value,
         otp: otp,
@@ -114,7 +114,7 @@ const verifyOtp = async (identifier, value, otp) => {
 const validateEmailOrMobileNumber = async (mobile_number, email) => {
   try {
     const response = await axios.post(
-      BASE_URL + "/validate-email-or-mobile-number",
+      BASE_URL + "/auths/validate-email-or-mobile-number",
       {
         mobile_number: mobile_number,
         email: email,
@@ -155,7 +155,7 @@ const deleteUserById = async (userId) => {
 const getUserInfoByToken = async () => {
   try {
     const token = await AsyncStorage.getItem("token");
-    const response = await axios.get(BASE_URL + "/user/info", {
+    const response = await axios.get(BASE_URL + "/auths/user/info", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",

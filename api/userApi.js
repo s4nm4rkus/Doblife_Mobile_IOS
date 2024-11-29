@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchUserProfile = async (userToken) => {
   const config = {
     method: "get",
-    url: `${BASE_URL}/user/info`,
+    url: `${BASE_URL}/auths/user/info`,
     headers: {
       Authorization: `Bearer ${userToken}`,
       "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const fetchUserProfile = async (userToken) => {
 export const updatePlayerDetails = async (datas) => {
   const config = {
     method: "post",
-    url: `${BASE_URL}/profile/player-details`,
+    url: `${BASE_URL}/profiles/player-details`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const updatePlayerDetails = async (datas) => {
 export const updatePlayerStatus = async (datas) => {
   const config = {
     method: "post",
-    url: `${BASE_URL}/profile/player-status`,
+    url: `${BASE_URL}/profiles/player-status`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export const updatePlayerStatus = async (datas) => {
 export const updateBasicInfo = async (datas) => {
   const config = {
     method: "post",
-    url: `${BASE_URL}/profile/basic-info`,
+    url: `${BASE_URL}/profiles/basic-info`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export const updateBasicInfo = async (datas) => {
 export const updateBirthplace = async (datas) => {
   const config = {
     method: "post",
-    url: `${BASE_URL}/profile/basic-info/birthplace`,
+    url: `${BASE_URL}/profiles/basic-info/birthplace`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
@@ -83,7 +83,7 @@ export const updateBirthplace = async (datas) => {
 export const updateHometown = async (datas) => {
   const config = {
     method: "post",
-    url: `${BASE_URL}/profile/basic-info/hometown`,
+    url: `${BASE_URL}/profiles/basic-info/hometown`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
@@ -99,7 +99,7 @@ export const updateHometown = async (datas) => {
 export const updateLivingAddress = async (datas) => {
   const config = {
     method: "post",
-    url: `${BASE_URL}/profile/basic-info/living-address`,
+    url: `${BASE_URL}/profiles/basic-info/living-address`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
@@ -115,23 +115,7 @@ export const updateLivingAddress = async (datas) => {
 export const updateVotingAddress = async (datas) => {
   const config = {
     method: "post",
-    url: `${BASE_URL}/profile/basic-info/voting-address`,
-    headers: {
-      Authorization: `Bearer ${datas.userToken}`,
-      "Content-Type": "application/json",
-    },
-    params: datas.params,
-  };
-
-  const response = await axios(config);
-
-  return response.data;
-};
-
-export const deleteProfileHistory = async (datas) => {
-  const config = {
-    method: "post",
-    url: `${BASE_URL}/profile/delete-profile-history`,
+    url: `${BASE_URL}/profiles/basic-info/voting-address`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",

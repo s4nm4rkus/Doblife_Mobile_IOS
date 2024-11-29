@@ -17,14 +17,15 @@ export const fetchProfiles = async (datas) => {
   return response.data;
 };
 
-export const fetchProfilesByTeam = async (params) => {
+export const fetchProfilesByTeam = async (datas) => {
   const config = {
     method: "get",
-    url: `${BASE_URL}/profiles/teams/${params.id}`,
+    url: `${BASE_URL}/profiles/teams/${datas.params.id}`,
     headers: {
+      Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
     },
-    params: params,
+    params: datas.params,
   };
 
   const response = await axios(config);
@@ -32,15 +33,14 @@ export const fetchProfilesByTeam = async (params) => {
   return response.data;
 };
 
-export const fetchPlayerDobcoins = async (datas) => {
+export const fetchPlayerDobcoins = async (userToken) => {
   const config = {
     method: "get",
     url: `${BASE_URL}/profiles/dobcoins`,
     headers: {
-      Authorization: `Bearer ${datas.userToken}`,
+      Authorization: `Bearer ${userToken}`,
       "Content-Type": "application/json",
     },
-    params: datas.params,
   };
 
   const response = await axios(config);

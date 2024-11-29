@@ -74,6 +74,8 @@ export const fetchMatches = async (datas) => {
     method: "get",
     url: `${BASE_URL}/team-profiles/${datas.params.team_id}/matches`,
     headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
     },
     params: datas.params,
@@ -89,6 +91,8 @@ export const fetchUpcomingMatches = async (datas) => {
     method: "get",
     url: `${BASE_URL}/team-profiles/${datas.params.team_id}/upcoming-matches`,
     headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
     },
     params: datas.params,
@@ -104,10 +108,11 @@ export const fetchCheckIsTeamOwner = async (datas) => {
     method: "get",
     url: `${BASE_URL}/team-profiles/${datas.team_id}/profiles/${datas.profile_id}/is-team-owner`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
     },
-    params: datas,
+    params: datas.params,
   };
 
   const response = await axios(config);
@@ -120,6 +125,7 @@ export const findTeam = async (datas) => {
     method: "get",
     url: `${BASE_URL}/team-profiles/${datas.params.code}`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
     },
@@ -136,8 +142,9 @@ export const createTeam = async (datas) => {
     method: "post",
     url: `${BASE_URL}/team-profiles`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      "Content-Type": "multipart/form-data",
+      "Content-Type": "application/json",
     },
     data: datas.formData,
   };
@@ -152,6 +159,7 @@ export const joinTeam = async (datas) => {
     method: "post",
     url: `${BASE_URL}/team-profiles/join`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
     },
@@ -168,6 +176,7 @@ export const dropPlayer = async (datas) => {
     method: "delete",
     url: `${BASE_URL}/team-profiles/${datas.team_id}/profiles/${datas.profile_id}`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",
     },

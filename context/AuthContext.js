@@ -22,15 +22,10 @@ export const AuthProvider = ({ children }) => {
   const [userProfile, setUserProfile] = useState(null);
 
   const login = (emailOrMobile, password, navigation) => {
-    console.log("Starting login...");
-    console.log("Email/Mobile:", emailOrMobile);
-    console.log("Password:", password);
-
     setIsLoading(true);
-
     axios
       .post(
-        BASE_URL + "/login",
+        BASE_URL + "/auths/login",
         {
           email: emailOrMobile,
           password: password,
@@ -43,10 +38,8 @@ export const AuthProvider = ({ children }) => {
         }
       )
       .then((response) => {
-        console.log("Response received:", response.data);
-
+        // console.log(response.data);
         if (response.data.code === 200) {
-          console.log("Login successful. User token and profile being set...");
           SecureStore.setItemAsync("userToken", response.data.token);
           AsyncStorage.setItem(
             "userProfile",
@@ -58,7 +51,6 @@ export const AuthProvider = ({ children }) => {
         }
 
         if (response.data.code === 1) {
-          console.log("User needs to register. Redirecting...");
           dispatch(setEmailOrMobile(response.data.email_or_mobile));
           dispatch(setUserId(response.data.user_id));
           dispatch(setPassword(response.data.password));
@@ -67,7 +59,6 @@ export const AuthProvider = ({ children }) => {
           return;
         }
 
-        console.log("Login failed:", response.data.message);
         Toast.show({
           type: "customErrorToast",
           text1: "Oh snap!",
@@ -75,11 +66,10 @@ export const AuthProvider = ({ children }) => {
         });
       })
       .catch((error) => {
-        console.error("Error response:", error.response);
-        console.error("Error object:", error);
+        console.log(error.response);
+        console.log(error);
       })
       .finally(() => {
-        console.log("Login process completed. IsLoading being set to false.");
         setIsLoading(false);
       });
   };
@@ -87,7 +77,7 @@ export const AuthProvider = ({ children }) => {
   const loginWithFacebook = (access_token) => {
     axios
       .post(
-        BASE_URL + "/login/facebook",
+        BASE_URL + "/auths/login/facebook",
         {
           access_token: access_token,
         },
@@ -99,6 +89,7 @@ export const AuthProvider = ({ children }) => {
         }
       )
       .then((response) => {
+        console.log(response.data);
         if (response.data.code === 200) {
           SecureStore.setItemAsync("userToken", response.data.token);
           AsyncStorage.setItem(
@@ -164,7 +155,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     axios
       .post(
-        BASE_URL + "/logout",
+        BASE_URL + "/auths/logout",
         {},
         {
           headers: {
@@ -225,7 +216,7 @@ export const AuthProvider = ({ children }) => {
       let userProfile = await AsyncStorage.getItem("userProfile");
       userProfile = JSON.parse(userProfile);
       if (userToken) {
-        const response = await axios.get(BASE_URL + "/token/validate", {
+        const response = await axios.get(BASE_URL + "/auths/token/validate", {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${userToken}`,

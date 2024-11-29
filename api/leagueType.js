@@ -1,10 +1,10 @@
 import { BASE_URL } from "../utils/config";
 import axios from "axios";
 
-export const updateSeasonDetails = async (datas) => {
+export const fetchLeagueTypes = async (datas) => {
   const config = {
-    method: "post",
-    url: `${BASE_URL}/league-seasons/season-details/${datas.params.league_season_id}`,
+    method: "get",
+    url: `${BASE_URL}/league-types`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
       "Content-Type": "application/json",

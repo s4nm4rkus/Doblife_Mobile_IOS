@@ -1,45 +1,46 @@
 import { BASE_URL } from "../utils/config";
-import axios from 'axios';
+import axios from "axios";
 
 export const fetchTeamRosters = async (datas) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/team-rosters`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
 
   const response = await axios(config);
-  
+
   return response.data;
 };
 
 export const fetchMyTeamRosters = async (datas) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/team-rosters/my-teams`,
     headers: {
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
 
   const response = await axios(config);
-  
+
   return response.data;
 };
 
 export const fetchTeamPlayers = async (datas) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/team-rosters/league-participants/${datas.params.league_participant_id}/league-matchups/${datas.params.league_matchup_id}`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
@@ -51,11 +52,12 @@ export const fetchTeamPlayers = async (datas) => {
 
 export const fetchLeagueTeamPlayers = async (datas) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/team-rosters/league-participants/${datas.params.league_participant_id}`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
@@ -67,11 +69,12 @@ export const fetchLeagueTeamPlayers = async (datas) => {
 
 export const fetchPlayerPreviousTeams = async (datas) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/team-rosters/player-previous-teams`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
@@ -83,11 +86,12 @@ export const fetchPlayerPreviousTeams = async (datas) => {
 
 export const fetchPlayerCurrentTeams = async (datas) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/team-rosters/player-current-teams`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
@@ -99,91 +103,80 @@ export const fetchPlayerCurrentTeams = async (datas) => {
 
 export const fetchTeamProfilePics = async (datas) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/team-rosters/team-profile-pics`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
 
   const response = await axios(config);
-  
+
   return response.data;
 };
 
 export const fetchLeaguePlayerPoints = async (datas) => {
   const config = {
-    method: 'get',
+    method: "get",
     url: `${BASE_URL}/team-rosters/league-player-points`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
 
   const response = await axios(config);
-  
+
   return response.data;
 };
 
 export const updatePlayerStatus = async (datas) => {
   const config = {
-    method: 'post',
+    method: "post",
     url: `${BASE_URL}/team-rosters/profiles/${datas.params.profile_id}/league-participants/${datas.params.league_participant_id}/status`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
 
   const response = await axios(config);
-  
+
   return response.data;
 };
 
 export const updateTeamProfilePic = async (datas) => {
   const config = {
-    method: 'post',
+    method: "post",
     url: `${BASE_URL}/team-rosters/team-profile-pics`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "application/json",
     },
     data: datas.formData,
   };
 
   const response = await axios(config);
-  
-  return response.data;
-};
 
-export const updateTeamRosterPlayerStatus = async (datas) => {
-  const config = {
-    method: 'post',
-    url: `${BASE_URL}/team-rosters/profiles/${datas.params.profile_id}`,
-    headers: {
-      Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
-    },
-    params: datas.params,
-  };
-
-  const response = await axios(config);
-  
   return response.data;
 };
 
 export const checkPlayerActiveTeam = async (datas) => {
   const config = {
-    method: 'post',
+    method: "post",
     url: `${BASE_URL}/team-rosters/profiles/${datas.params.profile_id}/check-player-active-team`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: datas.params,
   };
@@ -195,12 +188,14 @@ export const checkPlayerActiveTeam = async (datas) => {
 
 export const deleteTeamRoster = async (datas) => {
   const config = {
-    method: 'post',
+    method: "post",
     url: `${BASE_URL}/team-rosters/league-participants/${datas.params.league_participant_id}/delete-team-roster`,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
+    params: datas.params,
   };
 
   const response = await axios(config);
