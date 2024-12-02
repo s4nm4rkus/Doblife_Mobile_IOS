@@ -7,13 +7,20 @@ import {
   TouchableOpacity,
   Platform,
 } from "react-native";
+import {
+  configureReanimatedLogger,
+  ReanimatedLogLevel,
+} from "react-native-reanimated";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FONTSIZE } from "../../constants/theme";
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetModalProvider,
+  BottomSheetView,
 } from "@gorhom/bottom-sheet";
+import { useReducedMotion } from "react-native-reanimated";
 // import { BannerAd, BannerAdSize, InterstitialAd, RewardedInterstitialAd, RewardedAdEventType, TestIds} from 'react-native-google-mobile-ads';
 import {
   widthPercentageToDP as wp,
@@ -29,6 +36,15 @@ import {
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { fetchTeams } from "../../api/teamApi";
+import {
+  ownedTeamCheckedValue,
+  playedInCheckedValue,
+} from "../../features/myTeamsFilter/myTeamsFilterSlice";
+import {
+  leaveTeamOpenValue,
+  setIsLeaveTeamOpen,
+} from "../../features/myTeamsLeaveTeam/myTeamsLeaveTeamSlice";
 import CourtIcon from "../../assets/icons/Court";
 
 import Home from "./Home/Home";
@@ -46,6 +62,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useIsFocused } from "@react-navigation/native";
 
 import BottomSheetContent from "../../components/bottomSheet/BottomSheetContent";
+import styles from "./Home/home.style";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -84,12 +101,22 @@ const StackNavigator = ({ bottomSheetModalRef }) => {
   );
 };
 
+// This is the default configuration
+configureReanimatedLogger({
+  level: ReanimatedLogLevel.warn,
+  strict: false, // Reanimated runs in strict mode by default
+});
+
 const MainScreen = ({ navigation }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const { logout, userToken } = useContext(AuthContext);
+  const isPlayedInChecked = useSelector(playedInCheckedValue);
+  const isOwnedTeamChecked = useSelector(ownedTeamCheckedValue);
   const bottomSheetModalRef = useRef(null);
-  const snapPoints = ["16%", "50%", "100%"];
+  const snapPoints = ["25%", "50%", "100%"];
+  const firstUpdate = useRef(true);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const isFocused = useIsFocused();
 
   const {
@@ -98,6 +125,13 @@ const MainScreen = ({ navigation }) => {
     isError,
     error,
   } = useProfileData(userToken);
+
+  const { mutateAsync: fetchTeamsMutation } = useMutation({
+    mutationFn: fetchTeams,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["teams"]);
+    },
+  });
 
   const renderBackdrop = (props) => (
     <BottomSheetBackdrop
@@ -110,6 +144,7 @@ const MainScreen = ({ navigation }) => {
   );
 
   const renderBottomSheet = (bottomSheetModalRef) => {
+    console.log("Rendering bottom sheet content");
     return (
       <BottomSheetContent
         navigation={navigation}
@@ -118,9 +153,35 @@ const MainScreen = ({ navigation }) => {
     );
   };
 
+  const handleFilterTeams = async () => {
+    const params = {
+      profile_id: profile.id,
+      is_played_in_checked: isPlayedInChecked,
+      is_owned_team_checked: isOwnedTeamChecked,
+    };
+
+    try {
+      await fetchTeamsMutation({ userToken, params });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
+    handleFilterTeams();
+  }, [isPlayedInChecked, isOwnedTeamChecked]);
+
   const handlePresentModal = () => {
-    console.log("Presenting bottom sheet...");
-    bottomSheetModalRef.current?.present();
+    try {
+      bottomSheetModalRef.current?.present();
+    } catch (error) {
+      console.error("Error presenting bottom sheet:", error);
+    }
   };
 
   const handleBottomSheetDismiss = () => {
@@ -402,8 +463,11 @@ const MainScreen = ({ navigation }) => {
             console.error("Error dismissing bottom sheet:", error);
           }
         }}
+        // animateOnMount={false}
       >
-        {renderBottomSheet(bottomSheetModalRef)}
+        <BottomSheetView style={{ flex: 1, paddingBottom: hp(5.6) }}>
+          {renderBottomSheet(bottomSheetModalRef)}
+        </BottomSheetView>
       </BottomSheetModal>
     </SafeAreaView>
   );

@@ -188,7 +188,7 @@ const MenuScreen = ({ navigation }) => {
         style={styles.closeIconContainer}
         onPress={() => navigation.navigate("Main")}
       >
-        <FontAwesomeIcon icon={faXmark} size={hp(3.5)} />
+        <FontAwesomeIcon icon={faXmark} size={hp(3.0)} />
       </TouchableOpacity>
       <View style={styles.profileContainer}>
         {profile.default_profile_pic ? (

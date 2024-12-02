@@ -9,17 +9,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
+    paddingTop: hp(3),
   },
 
   closeIconContainer: {
     position: "absolute",
-    top: hp(1),
+    top: hp(5),
     right: wp(3),
   },
 
   profileContainer: {
     marginTop: hp(7.7),
-    paddingLeft: wp(11.45),
+    paddingLeft: wp(7.45),
     flexDirection: "row",
     alignItems: "center",
     paddingBottom: hp(4.88),
@@ -29,9 +30,9 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flex: 1,
-    marginLeft: wp(11.45),
+    marginLeft: wp(7.45),
     marginRight: wp(7.5),
-    marginTop: hp(6.4),
+    marginTop: hp(5.4),
   },
   footer: {
     height: hp(8.45),
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   },
 
   logoutContainer: {
-    marginLeft: wp(11.45),
+    marginLeft: wp(7.45),
   },
 
   logoutButtonContainer: {
