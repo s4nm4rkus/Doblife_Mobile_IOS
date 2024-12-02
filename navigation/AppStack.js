@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  HeaderStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import { COLORS } from "../constants/theme";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -53,6 +56,7 @@ const AppStack = () => (
       name="Menu"
       component={MenuScreen}
       options={{
+        gestureDirection: "horizontal-inverted",
         headerShown: false,
       }}
     />
