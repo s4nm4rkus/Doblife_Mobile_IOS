@@ -118,9 +118,26 @@ const MainScreen = ({ navigation }) => {
     );
   };
 
+  const handlePresentModal = () => {
+    console.log("Presenting bottom sheet...");
+    bottomSheetModalRef.current?.present();
+  };
+
   const handleBottomSheetDismiss = () => {
     setIsFilterOpen(false);
     dispatch(setIsLeaveTeamOpen(false));
+  };
+
+  const handleGesture = (evt) => {
+    const { nativeEvent } = evt;
+
+    if (isFilterOpen) return;
+
+    if (nativeEvent.velocityY < 0) {
+      setIsFilterOpen(true);
+      handlePresentModal();
+      return;
+    }
   };
 
   const handlePressNavigation = (item) => {

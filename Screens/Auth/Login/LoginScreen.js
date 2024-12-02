@@ -49,27 +49,27 @@ const LoginScreen = ({ navigation }) => {
     navigation.navigate("Register");
   };
 
-  const [cities, setCities] = useState([]);
-  const [error, setError] = useState(null);
+  // const [cities, setCities] = useState([]);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchCities = async () => {
-      try {
-        const response = await fetch("http://staging.doblife.com/api/cities");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setCities(data);
-        console.log("Cities fetched:", data);
-      } catch (err) {
-        setError(err.message);
-        console.error("Failed to fetch cities:", err.message);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCities = async () => {
+  //     try {
+  //       const response = await fetch("http://staging.doblife.com/api/cities");
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  //       const data = await response.json();
+  //       setCities(data);
+  //       console.log("Cities fetched:", data);
+  //     } catch (err) {
+  //       setError(err.message);
+  //       console.error("Failed to fetch cities:", err.message);
+  //     }
+  //   };
 
-    fetchCities();
-  }, []);
+  //   fetchCities();
+  // }, []);
 
   return (
     <TouchableWithoutFeedback

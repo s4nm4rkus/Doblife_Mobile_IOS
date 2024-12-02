@@ -1,10 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
+import "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import AppNavigator from "./navigation/AppNavigator";
 import { AuthProvider } from "./context/AuthContext";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import LoginScreen from "./Screens/Auth/Login/LoginScreen";
 import RegistrationScreen from "./Screens/Auth/Register/RegistrationScreen";
 import { NavigationContainer } from "@react-navigation/native";
@@ -42,12 +44,14 @@ export default function App() {
   }
 
   return (
-    <Provider store={store}>
-      <AuthProvider>
-        <QueryClientProvider client={queryClient}>
-          <AppNavigator />
-        </QueryClientProvider>
-      </AuthProvider>
-    </Provider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Provider store={store}>
+        <AuthProvider>
+          <QueryClientProvider client={queryClient}>
+            <AppNavigator />
+          </QueryClientProvider>
+        </AuthProvider>
+      </Provider>
+    </GestureHandlerRootView>
   );
 }

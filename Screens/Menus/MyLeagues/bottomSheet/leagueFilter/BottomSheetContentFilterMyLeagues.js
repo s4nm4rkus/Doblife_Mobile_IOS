@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
-import CheckBox from "@react-native-community/checkbox";
+// import CheckBox from "@react-native-community/checkbox";
 
 import styles from "./bottomSheetContentFilterMyLeagues.style";
 import { useDispatch, useSelector } from "react-redux";

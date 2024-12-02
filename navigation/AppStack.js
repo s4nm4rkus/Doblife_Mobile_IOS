@@ -6,6 +6,7 @@ import { COLORS } from "../constants/theme";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import MainScreen from "../Screens/Tabs/MainScreen";
+import MenuScreen from "../Screens/Menu/MenuScreen";
 
 import HeaderLeftButton from "../components/common/buttons/headerLeftButton/HeaderLeftButton";
 
@@ -46,6 +47,14 @@ const AppStack = () => (
         },
         headerShadowVisible: true,
       })}
+    />
+
+    <Stack.Screen
+      name="Menu"
+      component={MenuScreen}
+      options={{
+        headerShown: false,
+      }}
     />
   </Stack.Navigator>
 );
