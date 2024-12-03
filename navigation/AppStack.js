@@ -11,6 +11,8 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import MainScreen from "../Screens/Tabs/MainScreen";
 import MenuScreen from "../Screens/Menu/MenuScreen";
 
+import CreateLeagueScreen from "../Screens/CreateLeague/CreateLeagueScreen";
+
 import HeaderLeftButton from "../components/common/buttons/headerLeftButton/HeaderLeftButton";
 
 const Stack = createStackNavigator();
@@ -50,6 +52,12 @@ const AppStack = () => (
         },
         headerShadowVisible: true,
       })}
+    />
+
+    <Stack.Screen
+      name="CreateLeague"
+      component={CreateLeagueScreen}
+      options={{ headerShown: false }}
     />
 
     <Stack.Screen
