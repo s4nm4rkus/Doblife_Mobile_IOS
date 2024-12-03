@@ -3,47 +3,47 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { COLORS, FONT, FONTSIZE } from "../../../constants/theme";
+import { FONTSIZE } from "../../../constants/theme";
+
 const styles = StyleSheet.create({
   container: {
-    height: hp(35),
-    paddingTop: 55,
-    paddingHorizontal: 25,
-    marginBottom: 20,
+    height: hp(33.94),
     borderBottomRightRadius: 120,
   },
   backButtonContainer: {
     flexDirection: "row",
     alignItems: "center",
+    marginTop: hp(5.5),
   },
-
-  titleTextContainer: {},
-
   textContainer: {
+    paddingLeft: wp(9.2),
+    paddingRight: wp(13.7),
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 15,
   },
-  arrowLeftButton: {},
+  arrowLeftButton: {
+    paddingLeft: wp(9.2),
+  },
   editPlayerDetailsText: {
     fontSize: FONTSIZE.semi_large,
-    marginLeft: 20,
   },
-  headerButton: {
-    marginRight: 20,
-  },
+  headerButton: {},
   backText: {
-    fontSize: FONTSIZE.semi_large,
-    marginLeft: 10,
+    fontSize: FONTSIZE.large,
+    marginLeft: 13,
+    fontFamily: "RobotoCondensed",
     color: "white",
   },
   joinALeagueText: {
-    fontSize: FONTSIZE.large_5,
+    marginTop: hp(3.8),
+    fontSize: FONTSIZE.screen_title,
     color: "white",
-    fontWeight: "bold",
+    fontFamily: "RobotoCondensedBold",
   },
   contentText: {
-    fontSize: FONTSIZE.semi_large,
+    marginTop: hp(1.98),
+    fontSize: FONTSIZE.description,
+    fontFamily: "RobotoCondensed",
     color: "white",
   },
 });

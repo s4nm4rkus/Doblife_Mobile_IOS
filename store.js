@@ -6,6 +6,8 @@ import modalSlice from "./features/modal/modalSlice";
 import myTeamsFilterSlice from "./features/myTeamsFilter/myTeamsFilterSlice";
 import myTeamsLeaveTeamSlice from "./features/myTeamsLeaveTeam/myTeamsLeaveTeamSlice";
 import createLeagueSlice from "./features/createLeague/createLeagueSlice";
+import createTeamSlice from "./features/team/createTeamSlice";
+import leagueSlice from "./features/league/leagueSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +18,7 @@ export const store = configureStore({
     myTeamsFilter: myTeamsFilterSlice,
     myTeamsLeaveTeam: myTeamsLeaveTeamSlice,
     createLeague: createLeagueSlice,
+    createTeam: createTeamSlice,
+    league: leagueSlice,
   },
 });

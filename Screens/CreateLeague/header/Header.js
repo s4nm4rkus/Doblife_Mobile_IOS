@@ -4,11 +4,12 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Feather } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import styles from "./header.style";
 
 const Header = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <LinearGradient colors={["#c42414", "#7c0b00"]} style={styles.container}>
       <View style={styles.titleTextContainer}>
         <Text style={styles.joinALeagueText}>Start your</Text>
         <Text style={styles.joinALeagueText}>own League</Text>
@@ -19,7 +20,7 @@ const Header = ({ navigation }) => {
           and by selecting the league type.
         </Text>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 

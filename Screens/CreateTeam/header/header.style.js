@@ -6,10 +6,7 @@ import {
 import { COLORS, FONT, FONTSIZE } from "../../../constants/theme";
 const styles = StyleSheet.create({
   container: {
-    height: hp(35),
-    paddingTop: 55,
-    paddingHorizontal: 25,
-    marginBottom: 20,
+    height: hp(33.1),
     borderBottomRightRadius: 120,
   },
   backButtonContainer: {
@@ -17,33 +14,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  titleTextContainer: {},
+  titleTextContainer: {
+    paddingLeft: wp(10.7),
+    paddingRight: wp(13.7),
+    marginTop: hp(5.5),
+  },
 
   textContainer: {
+    paddingLeft: wp(10.7),
+    paddingRight: wp(15.2),
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 15,
-  },
-  arrowLeftButton: {},
-  editPlayerDetailsText: {
-    fontSize: FONTSIZE.semi_large,
-    marginLeft: 20,
-  },
-  headerButton: {
-    marginRight: 20,
-  },
-  backText: {
-    fontSize: FONTSIZE.semi_large,
-    marginLeft: 10,
-    color: "white",
   },
   joinALeagueText: {
     fontSize: FONTSIZE.large_5,
     color: "white",
-    fontWeight: "bold",
+    fontFamily: "RobotoCondensedBold",
   },
   contentText: {
-    fontSize: FONTSIZE.semi_large,
+    marginTop: hp(0.5),
+    fontSize: FONTSIZE.description,
+    fontFamily: "RobotoCondensed",
     color: "white",
   },
 });
