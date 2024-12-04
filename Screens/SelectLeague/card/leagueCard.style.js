@@ -8,6 +8,14 @@ import { FONTSIZE } from "../../../constants/theme";
 const styles = StyleSheet.create({
   container: {
     width: wp(45),
+    margin: 2,
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
 
   cardContainer: {
