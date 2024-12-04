@@ -1,24 +1,35 @@
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { View, Text, TouchableOpacity, Modal } from 'react-native';
-import styles from './selectDivisionModal.style';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { divisionIDValue, divisionNameValue, divisionsValue, leagueIDValue, setDivisionID, setDivisions, setIsSelectDivisionModalVisible } from '../../../../features/selectLeague/selectLeagueSlice';
-import { fetchLeagueSeasonCategoriesByLeague } from '../../../../api/leagueSeasonCategoryApi';
-import { useMutation } from '@tanstack/react-query';
-import { Dropdown } from 'react-native-element-dropdown';
-import { useEffect } from 'react';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+import { View, Text, TouchableOpacity, Modal } from "react-native";
+import styles from "./selectDivisionModal.style";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  divisionIDValue,
+  divisionNameValue,
+  divisionsValue,
+  leagueIDValue,
+  setDivisionID,
+  setDivisions,
+  setIsSelectDivisionModalVisible,
+} from "../../../../features/selectLeague/selectLeagueSlice";
+import { fetchLeagueSeasonCategoriesByLeague } from "../../../../api/leagueSeasonCategoryApi";
+import { useMutation } from "@tanstack/react-query";
+import { Dropdown } from "react-native-element-dropdown";
+import { useEffect } from "react";
 
 const SelectDivisionModal = ({ isVisible, isCanceled, join }) => {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const leagueID = useSelector(leagueIDValue);
-	const divisionName = useSelector(divisionNameValue);
-	const divisionID = useSelector(divisionIDValue);
+  const leagueID = useSelector(leagueIDValue);
+  const divisionName = useSelector(divisionNameValue);
+  const divisionID = useSelector(divisionIDValue);
   const divisions = useSelector(divisionsValue);
 
-	const { mutateAsync: fetchLeagueSeasonCategoriesMutation } = useMutation({
+  const { mutateAsync: fetchLeagueSeasonCategoriesMutation } = useMutation({
     mutationFn: fetchLeagueSeasonCategoriesByLeague,
     onSuccess: (data) => {
       var count = Object.keys(data).length;
@@ -48,22 +59,25 @@ const SelectDivisionModal = ({ isVisible, isCanceled, join }) => {
 
       dispatch(setDivisions(leagueSeasonCategoriesArr));
 
-      const defaultSelectedItem = leagueSeasonCategoriesArr.length > 0 ? leagueSeasonCategoriesArr[0].value : null;
+      const defaultSelectedItem =
+        leagueSeasonCategoriesArr.length > 0
+          ? leagueSeasonCategoriesArr[0].value
+          : null;
       dispatch(setDivisionID(defaultSelectedItem));
     },
   });
 
-	const handleJoin = async () => {
-    console.log('join')
+  const handleJoin = async () => {
+    console.log("join");
   };
 
-	const handleFetchDivisions = async () => {
+  const handleFetchDivisions = async () => {
     const params = {
       league_id: leagueID,
-    }
+    };
 
     try {
-      await fetchLeagueSeasonCategoriesMutation({params});
+      await fetchLeagueSeasonCategoriesMutation({ params });
     } catch (e) {
       console.log(e);
     }
@@ -72,9 +86,9 @@ const SelectDivisionModal = ({ isVisible, isCanceled, join }) => {
   useEffect(() => {
     dispatch(setDivisionID(null));
     handleFetchDivisions();
-  }, [leagueID])
+  }, [leagueID]);
 
-  const renderItem = item => {
+  const renderItem = (item) => {
     return (
       <View style={styles.item}>
         <Text style={styles.textItem}>{item.label}</Text>
@@ -83,30 +97,19 @@ const SelectDivisionModal = ({ isVisible, isCanceled, join }) => {
   };
 
   return (
-    <Modal
-			visible={isVisible}
-			transparent={true}
-			animationType="fade"
-    > 
-			<View style={styles.overlay}/>
-			<View style={styles.modalContainer}>
-				<View style={styles.modalContent}>
+    <Modal visible={isVisible} transparent={true} animationType="fade">
+      <View style={styles.overlay} />
+      <View style={styles.modalContainer}>
+        <View style={styles.modalContent}>
           <View style={styles.chooseDivisionContainer}>
-						<Text style={styles.chooseDivisionText}>
-							Choose Division
-						</Text>
+            <Text style={styles.chooseDivisionText}>Choose Division</Text>
             <View style={styles.xMarkContainer}>
-              <TouchableOpacity 
-                onPress={() => isCanceled()}
-              >
-                <FontAwesomeIcon 
-                  icon={faXmark} 
-                  size={hp(3)}
-                />
+              <TouchableOpacity onPress={() => isCanceled()}>
+                <FontAwesomeIcon icon={faXmark} size={hp(3)} />
               </TouchableOpacity>
             </View>
-					</View>
-					<View style={styles.inputContainer}>
+          </View>
+          <View style={styles.inputContainer}>
             <Text style={styles.inputLabelText}>Divisions</Text>
             <Dropdown
               style={styles.dropdown}
@@ -122,24 +125,24 @@ const SelectDivisionModal = ({ isVisible, isCanceled, join }) => {
               placeholder="Select"
               searchPlaceholder="Search..."
               value={divisionID}
-              onChange={item => {
+              onChange={(item) => {
                 dispatch(setDivisionID(item.value));
               }}
               renderItem={renderItem}
             />
           </View>
-					<View style={styles.modalButtons}>
-						<TouchableOpacity
-							style={[styles.modalButton, styles.yesButton]}
-							onPress={join}
-						>
-							<Text style={styles.yesButtonText}>Join</Text>
-						</TouchableOpacity>
-					</View>
-				</View>
-			</View>
+          <View style={styles.modalButtons}>
+            <TouchableOpacity
+              style={[styles.modalButton, styles.yesButton]}
+              onPress={join}
+            >
+              <Text style={styles.yesButtonText}>Join</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
     </Modal>
-  )
-}
+  );
+};
 
-export default SelectDivisionModal
+export default SelectDivisionModal;

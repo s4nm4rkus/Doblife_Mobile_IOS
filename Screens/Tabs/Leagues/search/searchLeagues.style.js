@@ -3,7 +3,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { COLORS, FONT, FONTSIZE, SIZES } from "../../../constants/theme";
+import { COLORS, FONT, FONTSIZE, SIZES } from "../../../../constants/theme";
 
 const styles = StyleSheet.create({
   container: {

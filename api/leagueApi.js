@@ -12,9 +12,19 @@ export const fetchLeagues = async (datas) => {
     params: datas.params,
   };
 
-  const response = await axios(config);
-
-  return response.data;
+  try {
+    const response = await axios(config);
+    console.log("Leagues fetched successfully:", response.data);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.log("Error Status Code:", error.response.status);
+      console.log("Error Response Data:", error.response.data);
+    } else {
+      console.log("Network or Configuration Error:", error.message);
+    }
+    throw error;
+  }
 };
 
 export const fetchLeague = async (datas) => {
@@ -29,7 +39,6 @@ export const fetchLeague = async (datas) => {
   };
 
   const response = await axios(config);
-
   return response.data;
 };
 

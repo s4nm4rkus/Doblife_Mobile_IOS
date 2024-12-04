@@ -1,30 +1,48 @@
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { useState, useEffect, useContext } from "react";
+import { Dropdown } from "react-native-element-dropdown";
 import { SafeAreaView } from "react-native-safe-area-context";
-import styles from "./search.style";
-import { AuthContext } from "../../../context/AuthContext";
-import { useQueryClient } from "@tanstack/react-query";
+import styles from "./searchLeagues.style";
+import { BASE_URL } from "../../../../utils/config";
+import { AuthContext } from "../../../../context/AuthContext";
+import axios from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { updatePlayerDetails } from "../../../../api/userApi";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import SearchHeader from "../../../components/header/searchHeader/SearchHeader";
+import SearchHeader from "../../../../components/header/searchHeader/SearchHeader";
 import { Iconify } from "react-native-iconify";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { fetchLeagues } from "../../../../api/leagueApi";
+import { useDispatch } from "react-redux";
+import { setSearch } from "../../../../features/leaguesFilter/leaguesFilterSlice";
 
-const data = [
-  "Sk senior League",
-  "Brill Sports League",
-  "Brill Sports League 1",
-  "Brill Sports League 2",
-];
-
-const SearchScreen = ({ navigation }) => {
+const SearchLeaguesScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const { userToken } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const [text, setText] = useState(null);
+  const [data, setData] = useState([]);
   const [history, setHistory] = useState([]);
   const profile = queryClient.getQueryData(["profile"]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const [leagues, setLeagues] = useState([]);
+  const [page, setPage] = useState(1);
+  let timeout;
+
+  const { mutateAsync: fetchLeaguesMutation } = useMutation({
+    mutationFn: fetchLeagues,
+    onSuccess: (data) => {
+      setLeagues((prevData) => [...prevData, ...data.data]);
+      setHasMore(data.next_page_url !== null);
+      setRefreshing(false);
+      setIsLoading(false);
+    },
+  });
 
   const recover = async () => {
     let history = await AsyncStorage.getItem("history");
@@ -33,9 +51,33 @@ const SearchScreen = ({ navigation }) => {
     }
   };
 
+  const onChangeText = (text) => {
+    clearTimeout(timeout); // Clear previous timeout
+    setText(text);
+    timeout = setTimeout(() => {
+      handleSearchLeagues(text); // Call handleSearch after 500ms delay
+    }, 500);
+  };
+
+  const handleSearchLeagues = async (text) => {
+    const initialParams = {
+      search: text,
+    };
+
+    const params = {
+      ...initialParams,
+    };
+
+    try {
+      await fetchLeaguesMutation({ params });
+    } catch (e) {
+      console.log(e.response);
+    }
+  };
+
   const handleSearch = (item) => {
     let historyArr = history;
-    historyArr.push({ name: item });
+    historyArr.push({ name: item.name });
 
     let result = history.reduce((unique, o) => {
       if (!unique.some((obj) => obj.name === o.name)) {
@@ -44,6 +86,8 @@ const SearchScreen = ({ navigation }) => {
       return unique;
     }, []);
 
+    dispatch(setSearch(item.name));
+    navigation.navigate("Leagues");
     setHistory(result);
     AsyncStorage.setItem("history", JSON.stringify(result));
     setText(null);
@@ -62,11 +106,15 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SearchHeader navigation={navigation} text={text} setText={setText} />
+      <SearchHeader
+        navigation={navigation}
+        text={text}
+        setText={onChangeText}
+      />
       {text ? (
         <View style={styles.recentSearchesContainer}>
-          {data?.map((item) => (
-            <TouchableOpacity key={item} onPress={() => handleSearch(item)}>
+          {leagues?.map((item) => (
+            <TouchableOpacity key={item.id} onPress={() => handleSearch(item)}>
               <View
                 style={{
                   flexDirection: "row",
@@ -74,7 +122,7 @@ const SearchScreen = ({ navigation }) => {
                   marginBottom: 15,
                 }}
               >
-                <Text style={{ fontWeight: "bold" }}>{item}</Text>
+                <Text style={{ fontWeight: "bold" }}>{item.name}</Text>
                 <Iconify
                   icon="heroicons-outline:search"
                   size={hp(3)}
@@ -125,4 +173,4 @@ const SearchScreen = ({ navigation }) => {
   );
 };
 
-export default SearchScreen;
+export default SearchLeaguesScreen;

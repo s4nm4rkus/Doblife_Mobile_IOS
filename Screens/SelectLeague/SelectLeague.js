@@ -74,6 +74,7 @@ const SelectLeague = ({ route, navigation }) => {
   };
 
   const handleFetchLeagues = async () => {
+    console.log("Selected Teams:", selectedTeams);
     let selectedTeamsIDs = selectedTeams.map(
       (team) => team.league_participant.team_profile.id
     );
@@ -87,11 +88,14 @@ const SelectLeague = ({ route, navigation }) => {
     const params = {
       ...initialParams,
     };
+    console.log("Fetching Leagues with Params:", params);
 
     try {
-      await fetchLeaguesMutation({ params, userToken });
+      const result = await fetchLeaguesMutation({ params, userToken });
+      console.log("API Call Successful. Result:", result);
     } catch (e) {
       console.log(e.response);
+      console.error("API Call Failed:", e.response?.data || e.message);
     }
   };
 
@@ -144,14 +148,16 @@ const SelectLeague = ({ route, navigation }) => {
     </View>
   );
 
-  const renderItem = ({ item }) => (
-    <LeagueCard
-      key={item.id}
-      data={item}
-      navigation={navigation}
-      routeParams={route.params}
-    />
-  );
+  const renderItem = ({ item }) => {
+    return (
+      <LeagueCard
+        key={item.id}
+        data={item}
+        navigation={navigation}
+        routeParams={route.params}
+      />
+    );
+  };
 
   return (
     <>

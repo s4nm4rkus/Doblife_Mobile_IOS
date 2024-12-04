@@ -6,6 +6,7 @@ import modalSlice from "./features/modal/modalSlice";
 import myTeamsFilterSlice from "./features/myTeamsFilter/myTeamsFilterSlice";
 import myTeamsLeaveTeamSlice from "./features/myTeamsLeaveTeam/myTeamsLeaveTeamSlice";
 import createLeagueSlice from "./features/createLeague/createLeagueSlice";
+import myTeamsSelectTeamSlice from "./features/myTeamsSelectTeam/myTeamsSelectTeamSlice";
 import createTeamSlice from "./features/team/createTeamSlice";
 import leagueSlice from "./features/league/leagueSlice";
 import selectLeagueSlice from "./features/selectLeague/selectLeagueSlice";
@@ -24,5 +25,6 @@ export const store = configureStore({
     league: leagueSlice,
     selectLeague: selectLeagueSlice,
     selectTeam: selectTeamSlice,
+    myTeamsSelectTeam: myTeamsSelectTeamSlice,
   },
 });

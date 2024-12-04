@@ -1,29 +1,31 @@
 import { StyleSheet } from "react-native";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 import { COLORS, FONT, FONTSIZE } from "../../../constants/theme";
 import { ScaledSheet } from "react-native-size-matters";
 
 const styles = ScaledSheet.create({
   container: {
     height: hp(40),
-    backgroundColor: 'white', 
+    backgroundColor: "white",
     borderRadius: 11,
   },
 
   paginationWrapper: {
     height: hp(5.75),
     paddingHorizontal: wp(4.6),
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'white', 
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "white",
     borderRadius: 10,
   },
 
-  cardContainer: {
-  },
+  cardContainer: {},
 
   paginationContainer: {
-    marginTop: hp(2.15)
+    marginTop: hp(2.15),
   },
 
   scrollViewContent: {
@@ -33,13 +35,13 @@ const styles = ScaledSheet.create({
   rowContainer: {
     paddingHorizontal: wp(5.8),
     paddingVertical: hp(1.11),
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: "row",
+    alignItems: "center",
   },
 
   rowWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: "row",
+    alignItems: "center",
   },
 
   noTeamsText: {
@@ -48,54 +50,53 @@ const styles = ScaledSheet.create({
 
   teamName: {
     marginLeft: wp(5),
-    textAlign: 'left',
-    fontFamily: 'RobotoCondensed',
+    textAlign: "left",
+    fontFamily: "RobotoCondensed",
     fontSize: FONTSIZE.label,
   },
 
   joinButtonContainer: {
-    marginLeft: 'auto',
+    marginLeft: "auto",
   },
 
   joinButtonText: {
     color: COLORS.clr_light_white,
-    fontFamily: FONT.bold, 
-    fontSize: '14@mvs',
+    fontFamily: FONT.bold,
+    fontSize: "14@mvs",
   },
 
   paginationButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     width: hp(2.3),
     height: hp(2.3),
     borderRadius: 20,
     marginHorizontal: wp(4.12),
   },
   activeButton: {
-    backgroundColor: '#c42414',
+    backgroundColor: "#c42414",
     width: hp(2.3),
     height: hp(2.3),
     borderRadius: 25,
   },
   buttonText: {
-    color: 'black',
-    fontFamily: 'RobotoCondensed',
+    color: "black",
+    fontFamily: "RobotoCondensed",
     fontSize: FONTSIZE.large,
-    includeFontPadding: false
+    includeFontPadding: false,
   },
   activeButtonText: {
-    color: 'white',
-    fontFamily: 'RobotoCondensedBold',
+    color: "white",
+    fontFamily: "RobotoCondensedBold",
     fontSize: FONTSIZE.large,
-    includeFontPadding: false
+    includeFontPadding: false,
   },
 
   teamLogo: {
     width: hp(3.9),
     height: hp(3.9),
-    borderRadius: 200
+    borderRadius: 200,
   },
-  
 });
 
 export default styles;

@@ -1,5 +1,8 @@
 import { StyleSheet } from "react-native";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 import { FONTSIZE } from "../../../constants/theme";
 
 const styles = StyleSheet.create({
@@ -10,8 +13,8 @@ const styles = StyleSheet.create({
   cardContainer: {
     height: hp(22),
     borderRadius: 10,
-    overflow: 'hidden',
-    backgroundColor: 'white',
+    overflow: "hidden",
+    backgroundColor: "white",
   },
 
   content: {
@@ -20,9 +23,9 @@ const styles = StyleSheet.create({
 
   imageContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'blue',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "blue",
   },
 
   teamNameContainer: {
@@ -32,14 +35,14 @@ const styles = StyleSheet.create({
 
   joinContainer: {
     flex: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#c42414',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#c42414",
     paddingVertical: hp(1.5),
   },
 
   teamNameText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: FONTSIZE.modal_button,
   },
 
@@ -48,14 +51,14 @@ const styles = StyleSheet.create({
   },
 
   dateText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: FONTSIZE.modal_button,
   },
 
   joinText: {
     fontSize: FONTSIZE.modal_button,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
 });
 
