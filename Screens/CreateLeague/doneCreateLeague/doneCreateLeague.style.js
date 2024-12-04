@@ -20,20 +20,21 @@ const styles = StyleSheet.create({
   },
 
   leagueContainer: {
+    marginVertical: 50,
     alignItems: "center",
-    marginBottom: 50,
   },
 
   leagueNameText: {
-    fontSize: FONTSIZE.medium_4,
+    marginTop: 10,
+    fontSize: FONTSIZE.medium_2,
     fontWeight: "bold",
-    lineHeight: FONTSIZE.medium_4,
+    // lineHeight: FONTSIZE.medium_4,
   },
 
   leagueAcronymText: {
     fontWeight: "bold",
-    fontSize: FONTSIZE.semi_large,
-    lineHeight: FONTSIZE.semi_large,
+    fontSize: FONTSIZE.large_7,
+    // lineHeight: FONTSIZE.semi_large,
   },
 
   messageContainer: {
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   },
 
   messageText: {
-    fontSize: FONTSIZE.semi_large,
+    fontSize: FONTSIZE.semi_medium,
     textAlign: "center",
   },
 

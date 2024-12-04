@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontWeight: "bold",
-    fontSize: FONTSIZE.x_large,
+    fontSize: FONTSIZE.semi_x_large,
   },
 
   cardContainer: {
@@ -460,7 +460,7 @@ const styles = StyleSheet.create({
 
   seeAllText: {
     fontWeight: "bold",
-    fontSize: FONTSIZE.x_large,
+    fontSize: FONTSIZE.large,
     marginRight: 5,
   },
 

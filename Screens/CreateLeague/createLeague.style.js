@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     alignItems: "center",
-    // paddingBottom: 20,
+    paddingBottom: 25,
     paddingHorizontal: wp(6.2),
     zIndex: 1,
   },

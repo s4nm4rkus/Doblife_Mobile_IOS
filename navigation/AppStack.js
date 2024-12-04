@@ -14,6 +14,7 @@ import MenuScreen from "../Screens/Menu/MenuScreen";
 import CreateLeagueScreen from "../Screens/CreateLeague/CreateLeagueScreen";
 import JoinALeagueScreen from "../Screens/JoinALeague/JoinALeagueScreen";
 import CreateTeamScreen from "../Screens/CreateTeam/CreateTeamScreen";
+import SelectLeague from "../Screens/SelectLeague/SelectLeague";
 
 import HeaderLeftButton from "../components/common/buttons/headerLeftButton/HeaderLeftButton";
 
@@ -71,6 +72,12 @@ const AppStack = () => (
     <Stack.Screen
       name="CreateTeam"
       component={CreateTeamScreen}
+      options={{ headerShown: false }}
+    />
+
+    <Stack.Screen
+      name="SelectLeague"
+      component={SelectLeague}
       options={{ headerShown: false }}
     />
 

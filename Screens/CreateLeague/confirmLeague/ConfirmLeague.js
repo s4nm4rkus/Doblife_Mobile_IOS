@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import styles from "./confirmLeague.style";
 import { useSelector } from "react-redux";
 import {

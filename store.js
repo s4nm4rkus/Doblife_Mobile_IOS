@@ -8,6 +8,8 @@ import myTeamsLeaveTeamSlice from "./features/myTeamsLeaveTeam/myTeamsLeaveTeamS
 import createLeagueSlice from "./features/createLeague/createLeagueSlice";
 import createTeamSlice from "./features/team/createTeamSlice";
 import leagueSlice from "./features/league/leagueSlice";
+import selectLeagueSlice from "./features/selectLeague/selectLeagueSlice";
+import selectTeamSlice from "./features/selectTeam/selectTeamSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +22,7 @@ export const store = configureStore({
     createLeague: createLeagueSlice,
     createTeam: createTeamSlice,
     league: leagueSlice,
+    selectLeague: selectLeagueSlice,
+    selectTeam: selectTeamSlice,
   },
 });

@@ -1,5 +1,5 @@
 import { Text, View, TouchableOpacity } from "react-native";
-import { Iconify } from "react-native-iconify";
+import { IconButton } from "react-native-paper";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -12,10 +12,10 @@ const DoneHeader = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleTextContainer}>
-        <Iconify
-          icon="gg:check-o"
+        <IconButton
+          icon="check-circle"
           size={hp(10)}
-          color={COLORS.clr_light_white}
+          iconColor={COLORS.clr_light_white}
         />
         <Text style={styles.text}>Done creating League</Text>
       </View>

@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexGrow: 1,
-    paddingHorizontal: 25,
-    paddingBottom: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 10,
   },
 
   cardContainer: {
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginBottom: 20,
     paddingHorizontal: 25,
-    paddingVertical: 10,
+    paddingVertical: 15,
   },
 
   textTitle: {
@@ -38,15 +38,18 @@ const styles = StyleSheet.create({
 
   detailContainer: {
     flex: 1,
-    marginBottom: 5,
+    marginBottom: 15,
   },
 
   detailLabel: {
-    fontSize: FONTSIZE.medium,
+    fontSize: FONTSIZE.small,
+    marginBottom: 2,
   },
 
   detailValue: {
-    fontSize: FONTSIZE.detail,
+    fontSize: FONTSIZE.medium_1,
+    fontWeight: "600",
+    color: "red",
   },
 
   divisionContainer: {
@@ -68,11 +71,13 @@ const styles = StyleSheet.create({
   },
 
   labelText: {
-    fontSize: FONTSIZE.medium,
+    fontSize: FONTSIZE.small,
   },
 
   valueText: {
-    fontSize: FONTSIZE.detail,
+    fontSize: FONTSIZE.medium_1,
+    color: "red",
+    fontWeight: "600",
   },
 
   column: {

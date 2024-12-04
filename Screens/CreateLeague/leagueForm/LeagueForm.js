@@ -15,6 +15,7 @@ import {
   setLeagueName,
   setLeagueType,
 } from "../../../features/createLeague/createLeagueSlice";
+import { AuthContext } from "../../../context/AuthContext";
 import { BASE_URL } from "../../../utils/config";
 import axios from "axios";
 
@@ -37,6 +38,7 @@ const LeagueForm = ({ route, navigation }) => {
   const acronym = useSelector(acronymValue);
   const description = useSelector(descriptionValue);
   const leagueType = useSelector(leagueTypeValue);
+  const { userToken } = useContext(AuthContext);
   const [leagueTypes, setLeagueTypes] = useState([]);
   const [errors, setErrors] = useState({});
 
@@ -72,6 +74,9 @@ const LeagueForm = ({ route, navigation }) => {
     var config = {
       method: "get",
       url: `${BASE_URL}/league-types`,
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
     };
 
     axios(config)
