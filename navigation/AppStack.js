@@ -16,6 +16,7 @@ import JoinALeagueScreen from "../Screens/JoinALeague/JoinALeagueScreen";
 import CreateTeamScreen from "../Screens/CreateTeam/CreateTeamScreen";
 import SelectLeague from "../Screens/SelectLeague/SelectLeague";
 import SearchLeaguesScreen from "../Screens/Tabs/Leagues/search/SearchLeaguesScreen";
+import LeagueScreen from "../Screens/League/LeagueScreen";
 
 import HeaderLeftButton from "../components/common/buttons/headerLeftButton/HeaderLeftButton";
 
@@ -86,6 +87,41 @@ const AppStack = () => (
       name="SearchLeagues"
       component={SearchLeaguesScreen}
       options={{ headerShown: false }}
+    />
+
+    <Stack.Screen
+      name="League"
+      component={LeagueScreen}
+      options={({ navigation }) => ({
+        headerShown: true,
+        headerLeft: () => (
+          <HeaderLeftButton
+            onPress={() => navigation.navigate("Menu")}
+            color={COLORS.clr_light_white}
+            icon={faBars}
+          />
+        ),
+        headerTitle: (props) => (
+          <Image
+            source={require("../assets/logo.png")}
+            style={{ width: 100, height: 50 }}
+            resizeMode="contain"
+          />
+        ),
+        headerTitleAlign: "center",
+        headerTintColor: "#fff",
+        headerStyle: {
+          backgroundColor: COLORS.clr_minestrone,
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowColor: "black",
+          shadowOpacity: 1,
+          elevation: 15,
+        },
+        headerShadowVisible: true,
+      })}
     />
 
     <Stack.Screen

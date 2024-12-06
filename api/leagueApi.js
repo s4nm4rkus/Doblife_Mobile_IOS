@@ -28,18 +28,42 @@ export const fetchLeagues = async (datas) => {
 };
 
 export const fetchLeague = async (datas) => {
-  const config = {
-    method: "get",
-    url: `${BASE_URL}/leagues/${datas.params.league_id}`,
-    headers: {
-      Authorization: `Bearer ${datas.userToken}`,
-      "Content-Type": "application/json",
-    },
-    params: datas.params,
-  };
+  try {
+    // Log the entire datas object
+    console.log("Datas object: ", datas);
 
-  const response = await axios(config);
-  return response.data;
+    if (!datas.userToken) {
+      throw new Error("Missing or invalid user token.");
+    }
+
+    const config = {
+      method: "get",
+      url: `${BASE_URL}/leagues/${datas.params.league_id}`,
+      headers: {
+        Authorization: `Bearer ${datas.userToken}`,
+        "Content-Type": "application/json",
+      },
+      params: datas.params,
+    };
+
+    const response = await axios(config);
+    return response.data;
+  } catch (error) {
+    // Error handling as before
+    if (axios.isAxiosError(error)) {
+      console.error(
+        "Axios Error: ",
+        error.response ? error.response.data : error.message
+      );
+      console.error(
+        "Axios Error Status: ",
+        error.response ? error.response.status : "No response status"
+      );
+    } else {
+      console.error("General Error: ", error.message);
+    }
+    throw error;
+  }
 };
 
 export const fetchMyLeagues = async (datas) => {

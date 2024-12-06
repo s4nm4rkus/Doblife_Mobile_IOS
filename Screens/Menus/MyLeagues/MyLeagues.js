@@ -22,10 +22,10 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteProfileHistory } from "../../../api/userApi";
 import { useDispatch, useSelector } from "react-redux";
 // import ModalComponent from "../Profiles/tab/teams/modal/ModalComponent";
-// import {
-//   ownedLeagueCheckedValue,
-//   playedInCheckedValue,
-// } from "../../../features/myLeaguesFilter/myLeaguesFilterSlice";
+import {
+  ownedLeagueCheckedValue,
+  playedInCheckedValue,
+} from "../../../features/myLeaguesFilter/myLeaguesFilterSlice";
 import { deleteLeague, fetchMyLeagues } from "../../../api/leagueApi";
 import {
   BottomSheetModal,

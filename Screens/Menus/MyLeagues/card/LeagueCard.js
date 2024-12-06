@@ -14,9 +14,9 @@ import {
   setTeamName,
 } from "../../../../features/myTeamsLeaveTeam/myTeamsLeaveTeamSlice";
 import { setLeagueID } from "../../../../features/myLeaguesSelectLeague/myLeaguesSelectLeagueSlice";
-// import { setIsJoin } from "../../../../features/league/leagueSlice";
-// import { setLeagueSeasonCategory } from "../../../../features/selectDivision/selectDivisionSlice";
-// import { setLeagueMatchups } from "../../../../features/selectMatchups/selectMatchupsSlice";
+import { setIsJoin } from "../../../../features/league/leagueSlice";
+import { setLeagueSeasonCategory } from "../../../../features/selectDivision/selectDivisionSlice";
+import { setLeagueMatchups } from "../../../../features/selectMatchups/selectMatchupsSlice";
 
 const profileImageUrl =
   "https://images.pexels.com/photos/2834914/pexels-photo-2834914.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";

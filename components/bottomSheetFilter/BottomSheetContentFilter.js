@@ -21,7 +21,11 @@ import {
   faClockRotateLeft,
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
-import { BottomSheetBackdrop, BottomSheetModal } from "@gorhom/bottom-sheet";
+import {
+  BottomSheetBackdrop,
+  BottomSheetModal,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet";
 
 const BottomSheetContentFilter = ({ bottomSheetModalRef, navigation }) => {
   const dispatch = useDispatch();
@@ -64,66 +68,67 @@ const BottomSheetContentFilter = ({ bottomSheetModalRef, navigation }) => {
       snapPoints={["35%"]}
       backdropComponent={renderBackdrop}
     >
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.buttonStyle}
-          onPress={() => handleUncheckAll()}
-        >
-          <FontAwesomeIcon icon={faGlobe} size={30} />
-          <Text style={styles.buttonText}>All Teams</Text>
-        </TouchableOpacity>
-        <View style={styles.itemContainer}>
-          <View style={styles.textContainer}>
-            <FontAwesomeIcon icon={faBasketball} size={30} />
-            <View>
-              <Text style={styles.buttonText}>Played In</Text>
-              <Text style={styles.textDescription}>
-                Filter for teams you have currently played for
-              </Text>
+      <BottomSheetView>
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            onPress={() => handleUncheckAll()}
+          >
+            <FontAwesomeIcon icon={faGlobe} size={30} />
+            <Text style={styles.buttonText}>All Teams</Text>
+          </TouchableOpacity>
+          <View style={styles.itemContainer}>
+            <View style={styles.textContainer}>
+              <FontAwesomeIcon icon={faBasketball} size={30} />
+              <View>
+                <Text style={styles.buttonText}>Played In</Text>
+                <Text style={styles.textDescription}>
+                  Filter for teams you have currently played for
+                </Text>
+              </View>
+            </View>
+            <View style={styles.checkboxContainer}>
+              <CheckBox
+                value={isPlayedInChecked}
+                onChange={handlePlayedInCheckboxChange}
+              />
             </View>
           </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={isPlayedInChecked}
-              onChange={handlePlayedInCheckboxChange}
-            />
-          </View>
-        </View>
-        <View style={styles.itemContainer}>
-          <View style={styles.textContainer}>
-            <FontAwesomeIcon icon={faBriefcase} size={30} />
-            <View>
-              <Text style={styles.buttonText}>Owned Teams</Text>
-              <Text style={styles.textDescription}>
-                Filter for teams you have owned
-              </Text>
+          <View style={styles.itemContainer}>
+            <View style={styles.textContainer}>
+              <FontAwesomeIcon icon={faBriefcase} size={30} />
+              <View>
+                <Text style={styles.buttonText}>Owned Teams</Text>
+                <Text style={styles.textDescription}>
+                  Filter for teams you have owned
+                </Text>
+              </View>
+            </View>
+            <View style={styles.checkboxContainer}>
+              <CheckBox
+                value={isOwnedTeamChecked}
+                onChange={handleOwnedTeamCheckboxChange}
+              />
             </View>
           </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={isOwnedTeamChecked}
-              onChange={handleOwnedTeamCheckboxChange}
-            />
-          </View>
-        </View>
-        <View style={styles.itemContainer}>
-          <View style={styles.textContainer}>
-            <FontAwesomeIcon icon={faClockRotateLeft} size={30} />
-            <View>
-              <Text style={styles.buttonText}>Floating</Text>
-              <Text style={styles.textDescription}>
-                Filter teams which are not yet accepted in a league
-              </Text>
+          <View style={styles.itemContainer}>
+            <View style={styles.textContainer}>
+              <FontAwesomeIcon icon={faClockRotateLeft} size={30} />
+              <View>
+                <Text style={styles.buttonText}>Floating</Text>
+                <Text style={styles.textDescription}>
+                  Filter teams which are not yet accepted in a league
+                </Text>
+              </View>
+            </View>
+            <View style={styles.checkboxContainer}>
+              <CheckBox
+                value={isFloatingChecked}
+                onChange={handleFloatingCheckboxChange}
+              />
             </View>
           </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={isFloatingChecked}
-              onChange={handleFloatingCheckboxChange}
-            />
-          </View>
-        </View>
-        {/* <View style={styles.itemContainer}>
+          {/* <View style={styles.itemContainer}>
 					<View style={styles.textContainer}>
 						<FontAwesomeIcon 
 							icon={faClipboardList}
@@ -141,7 +146,8 @@ const BottomSheetContentFilter = ({ bottomSheetModalRef, navigation }) => {
 						/>
 					</View>
 				</View> */}
-      </View>
+        </View>
+      </BottomSheetView>
     </BottomSheetModal>
   );
 };
