@@ -198,8 +198,8 @@ const ParticipantsCard = ({ navigation }) => {
           ></FlatList>
         </ScrollView>
       ) : (
-        <View style={styles.participantContainer}>
-          <Text>No Participants</Text>
+        <View style={styles.participantsContainer}>
+          <Text style={styles.noParticipantsText}>No Participants</Text>
         </View>
       )}
       <BottomSheetSortByParticipants

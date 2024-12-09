@@ -55,8 +55,9 @@ const styles = StyleSheet.create({
   },
 
   noMatchesText: {
-    fontSize: FONTSIZE.semi_medium,
+    fontSize: FONTSIZE.small,
     fontFamily: "RobotoRegular",
+    alignSelf: "center",
   },
 
   matchContainer: {

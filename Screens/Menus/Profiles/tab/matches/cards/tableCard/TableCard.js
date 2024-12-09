@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Feather } from '@expo/vector-icons';
-import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
-import styles from './tableCard.style';
-import { useMutation } from '@tanstack/react-query';
-import { AuthContext } from '../../../../../../../context/AuthContext';
-import { useProfileData } from '../../../../../../../hooks/useProfileData';
-import { fetchTeamRosters } from '../../../../../../../api/teamRosterApi';
+import React, { useState, useEffect, useContext } from "react";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+import { Feather } from "@expo/vector-icons";
+import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
+import styles from "./tableCard.style";
+import { useMutation } from "@tanstack/react-query";
+import { AuthContext } from "../../../../../../../context/AuthContext";
+import { useProfileData } from "../../../../../../../hooks/useProfileData";
+import { fetchTeamRosters } from "../../../../../../../api/teamRosterApi";
 
 const TableCard = ({ routeState, navigation }) => {
   const { userToken, logout } = useContext(AuthContext);
@@ -15,7 +18,12 @@ const TableCard = ({ routeState, navigation }) => {
   const [lastPage, setLastPage] = useState(1);
   const [paginationButtons, setPaginationButtons] = useState([]);
 
-  const { data: profile, isLoading, isError, error } = useProfileData(userToken);
+  const {
+    data: profile,
+    isLoading,
+    isError,
+    error,
+  } = useProfileData(userToken);
 
   const { mutateAsync: fetchTeamRostersMutation } = useMutation({
     mutationFn: fetchTeamRosters,
@@ -32,37 +40,37 @@ const TableCard = ({ routeState, navigation }) => {
   });
 
   const handleFetchTeamRosters = async () => {
-    const initialParams = { 
+    const initialParams = {
       profile_id: profile.id,
       page: currentPage,
       items: 10,
-      order_by: 'created_at',
-      sort: 'desc'
-    }
-    
+      order_by: "created_at",
+      sort: "desc",
+    };
+
     const filterParams = routeState;
 
     const params = {
       ...initialParams,
-      ...filterParams
-    }
-    
+      ...filterParams,
+    };
+
     try {
-      await fetchTeamRostersMutation({userToken, params});
+      await fetchTeamRostersMutation({ userToken, params });
     } catch (e) {
       console.log(e);
     }
   };
 
   const handlePreviousPage = () => {
-    if(currentPage == 1) return;
+    if (currentPage == 1) return;
     setCurrentPage(currentPage - 1);
-  }
+  };
 
   const handleNextPage = () => {
-    if(lastPage == currentPage) return;
+    if (lastPage == currentPage) return;
     setCurrentPage(currentPage + 1);
-  }
+  };
 
   const handlePageClick = (page) => {
     setCurrentPage(page);
@@ -72,28 +80,32 @@ const TableCard = ({ routeState, navigation }) => {
     handleFetchTeamRosters();
   }, [currentPage, routeState]);
 
-  const renderItem = ({item}) => (
+  const renderItem = ({ item }) => (
     <View style={styles.row}>
-      <Text style={styles.cell}>{item.league_participant.team_profile.acronym}</Text>
+      <Text style={styles.cell}>
+        {item.league_participant.team_profile.acronym}
+      </Text>
     </View>
-  )
+  );
 
-  const renderButton = ({item}) => (
+  const renderButton = ({ item }) => (
     <TouchableOpacity
       key={item}
       onPress={() => handlePageClick(item)}
       style={[
         styles.paginationButton,
         item === currentPage ? styles.activeButton : null,
-      ]}>
-      <Text 
+      ]}
+    >
+      <Text
         style={[
           item === currentPage ? styles.activeButtonText : styles.buttonText,
-      ]}>
+        ]}
+      >
         {item}
       </Text>
     </TouchableOpacity>
-  )
+  );
 
   return (
     <>
@@ -102,11 +114,13 @@ const TableCard = ({ routeState, navigation }) => {
           <View style={styles.tableTitle}>
             <Text style={styles.playerDetailsText}>Matches</Text>
             <View style={styles.editContainer}>
-              <TouchableOpacity onPress={() => navigation.navigate('FilterMatch')}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("FilterMatch")}
+              >
                 <Feather
-                  name='bar-chart'
+                  name="bar-chart"
                   size={hp(2.9)}
-                  style={{transform: [{ rotate: '270deg' }]}}
+                  style={{ transform: [{ rotate: "270deg" }] }}
                 />
               </TouchableOpacity>
             </View>
@@ -120,18 +134,13 @@ const TableCard = ({ routeState, navigation }) => {
             keyExtractor={(item, index) => index.toString()}
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}
-          >
-          </FlatList>
+          ></FlatList>
         </View>
       </View>
       <View style={styles.cardContainer}>
         <View style={styles.paginationWrapper}>
-          <TouchableOpacity onPress={() => handlePreviousPage()} >
-            <Feather
-              name='chevron-left'
-              size={16}
-              color={'#c42414'}
-            />
+          <TouchableOpacity onPress={() => handlePreviousPage()}>
+            <Feather name="chevron-left" size={16} color={"#c42414"} />
           </TouchableOpacity>
           <FlatList
             horizontal
@@ -139,19 +148,14 @@ const TableCard = ({ routeState, navigation }) => {
             data={paginationButtons}
             keyExtractor={(item, index) => index.toString()}
             renderItem={renderButton}
-          >
-          </FlatList>
+          ></FlatList>
           <TouchableOpacity onPress={() => handleNextPage()}>
-            <Feather
-              name='chevron-right'
-              size={16}
-              color={'#c42414'}
-            />
+            <Feather name="chevron-right" size={16} color={"#c42414"} />
           </TouchableOpacity>
         </View>
       </View>
     </>
-  )
-}
+  );
+};
 
-export default TableCard
+export default TableCard;

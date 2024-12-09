@@ -43,6 +43,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 11,
     backgroundColor: "#C42414",
+    shadowColor: "#444444",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 1,
   },
 
   buttonText: {

@@ -17,6 +17,7 @@ import CreateTeamScreen from "../Screens/CreateTeam/CreateTeamScreen";
 import SelectLeague from "../Screens/SelectLeague/SelectLeague";
 import SearchLeaguesScreen from "../Screens/Tabs/Leagues/search/SearchLeaguesScreen";
 import LeagueScreen from "../Screens/League/LeagueScreen";
+import ProfilesScreen from "../Screens/Menus/Profiles/ProfilesScreen";
 
 import HeaderLeftButton from "../components/common/buttons/headerLeftButton/HeaderLeftButton";
 
@@ -117,8 +118,43 @@ const AppStack = () => (
             height: 2,
           },
           shadowColor: "black",
-          shadowOpacity: 1,
-          elevation: 15,
+          shadowOpacity: 0.4,
+          shadowRadius: 5,
+        },
+        headerShadowVisible: true,
+      })}
+    />
+
+    <Stack.Screen
+      name="Profiles"
+      component={ProfilesScreen}
+      options={({ navigation }) => ({
+        headerShown: true,
+        headerLeft: () => (
+          <HeaderLeftButton
+            onPress={() => navigation.navigate("Menu")}
+            color={COLORS.clr_light_white}
+            icon={faBars}
+          />
+        ),
+        headerTitle: (props) => (
+          <Image
+            source={require("../assets/logo.png")}
+            style={{ width: 100, height: 50 }}
+            resizeMode="contain"
+          />
+        ),
+        headerTitleAlign: "center",
+        headerTintColor: "#fff",
+        headerStyle: {
+          backgroundColor: COLORS.clr_minestrone,
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowColor: "black",
+          shadowOpacity: 0.3,
+          shadowRadius: 5,
         },
         headerShadowVisible: true,
       })}

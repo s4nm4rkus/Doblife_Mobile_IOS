@@ -86,8 +86,11 @@ const BottomSheetContentFilterMyLeagues = ({ bottomSheetModalRef }) => {
             </View>
             <View style={styles.checkboxContainer}>
               <Checkbox
+                status={isPlayedInChecked ? "checked" : "unchecked"}
                 value={isPlayedInChecked}
                 onPress={handlePlayedInCheckboxChange}
+                color="black"
+                uncheckedColor="#c60404"
               />
             </View>
           </View>

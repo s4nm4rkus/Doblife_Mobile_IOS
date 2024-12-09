@@ -26,6 +26,9 @@ import leaguesEditDivisionsSlice from "./features/leaguesEditDivisions/leaguesEd
 import myLeaguesSelectLeagueSlice from "./features/myLeaguesSelectLeague/myLeaguesSelectLeagueSlice";
 import myLeaguesFilterSlice from "./features/myLeaguesFilter/myLeaguesFilterSlice";
 import leaguesEditDescriptionsSlice from "./features/leaguesEditDescriptions/leaguesEditDescriptionsSlice";
+import profileSlice from "./features/profile/profileSlice";
+import editPlayerDetailsSlice from "./features/profile/editPlayerDetails/editPlayerDetailsSlice";
+import editAddressSlice from "./features/profile/editAddress/editAddressSlice";
 
 export const store = configureStore({
   reducer: {
@@ -56,5 +59,8 @@ export const store = configureStore({
     myLeaguesSelectLeague: myLeaguesSelectLeagueSlice,
     myLeaguesFilter: myLeaguesFilterSlice,
     leaguesEditDescriptions: leaguesEditDescriptionsSlice,
+    profile: profileSlice,
+    editPlayerDetails: editPlayerDetailsSlice,
+    editAddress: editAddressSlice,
   },
 });

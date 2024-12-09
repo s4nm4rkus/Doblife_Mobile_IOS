@@ -3,12 +3,12 @@ import { SIZES } from "../../../../../constants/theme";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-	},
+    flex: 1,
+  },
 
   cardContainer: {
     marginHorizontal: SIZES.semi_small,
-    marginBottom: SIZES.semi_small
+    marginBottom: SIZES.semi_small,
   },
 });
 

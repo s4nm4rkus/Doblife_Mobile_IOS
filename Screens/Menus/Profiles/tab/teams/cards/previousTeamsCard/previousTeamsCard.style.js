@@ -14,6 +14,13 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 11,
     backgroundColor: "white",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowColor: "black",
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
   },
 
   header: {

@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
     minHeight: hp(22),
     backgroundColor: "white",
     borderRadius: 11,
+    shadowColor: "#444444",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
   },
 
   headerContainer: {
@@ -48,6 +55,13 @@ const styles = StyleSheet.create({
   leagueDescriptionContainer: {
     marginTop: hp(0.9),
     paddingHorizontal: wp(5),
+    shadowColor: "#444444",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
   },
 
   seasonDescriptionContainer: {

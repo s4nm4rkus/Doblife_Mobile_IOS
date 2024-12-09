@@ -3,28 +3,26 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { FONTSIZE } from "../../../../../../../constants/theme";
+import {
+  COLORS,
+  FONT,
+  SIZES,
+  SHADOWS,
+  FONTSIZE,
+} from "../../../../constants/theme";
 
 const styles = StyleSheet.create({
   container: {
     borderRadius: 11,
     backgroundColor: "white",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowColor: "black",
-    shadowOpacity: 0.1,
-    shadowRadius: 1,
   },
 
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingTop: hp(1.8),
-    paddingBottom: hp(0.85),
-    paddingLeft: wp(4),
-    paddingRight: wp(6.3),
+    paddingTop: hp(1.45),
+    paddingBottom: hp(1.25),
+    paddingHorizontal: wp(5.1),
     borderBottomWidth: 1,
     borderColor: "rgba(170, 170, 170, 0.5)",
   },
@@ -46,8 +44,7 @@ const styles = StyleSheet.create({
   },
 
   detailsContainer: {
-    paddingLeft: wp(4),
-    paddingRight: wp(4.4),
+    marginHorizontal: wp(5.1),
     paddingTop: hp(1.6),
     paddingBottom: hp(2.6),
   },
@@ -75,6 +72,28 @@ const styles = StyleSheet.create({
     fontSize: FONTSIZE.button,
     fontFamily: "RobotoCondensed",
     color: "#aaa",
+  },
+
+  heightLabelContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  heightText: {
+    fontFamily: "RobotoCondensedBold",
+    fontSize: FONTSIZE.semi_x_large,
+  },
+
+  nullHeightText: {
+    fontSize: FONTSIZE.button,
+    fontFamily: "RobotoCondensed",
+    color: "#aaa",
+  },
+
+  measureText: {
+    marginLeft: wp(9.2),
+    fontSize: FONTSIZE.semi_medium,
+    fontFamily: "RobotoCondensed",
   },
 });
 

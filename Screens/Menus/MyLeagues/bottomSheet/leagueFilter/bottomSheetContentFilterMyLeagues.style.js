@@ -19,7 +19,10 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flex: 1,
     alignItems: "flex-end",
-    paddingRight: 20,
+    marginRight: 20,
+    minWidth: 2,
+    borderWidth: 1,
+    borderColor: "black",
   },
   buttonStyle: {
     alignItems: "center",

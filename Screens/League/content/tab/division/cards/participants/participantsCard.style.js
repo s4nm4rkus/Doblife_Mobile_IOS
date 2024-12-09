@@ -47,6 +47,11 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
 
+  noParticipantsText: {
+    marginVertical: "36%",
+    paddingHorizontal: "36.5%",
+  },
+
   teamParticipantContainer: {
     flexDirection: "row",
     alignItems: "center",

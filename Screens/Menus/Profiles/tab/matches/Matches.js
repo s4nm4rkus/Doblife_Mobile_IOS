@@ -1,15 +1,14 @@
+import { Text, View } from "react-native";
 
-import { Text, View } from 'react-native';
-
-import styles from './matches.style'
-import TableCard from './cards/tableCard/TableCard';
+import styles from "./matches.style";
+import TableCard from "./cards/tableCard/TableCard";
 
 const Matches = ({ routeState, navigation }) => {
   return (
     <View style={styles.container}>
-      <TableCard navigation={navigation} routeState={routeState}/>
+      <TableCard navigation={navigation} routeState={routeState} />
     </View>
-  )
-}
+  );
+};
 
 export default Matches;

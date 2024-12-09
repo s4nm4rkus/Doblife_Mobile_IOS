@@ -6,7 +6,11 @@ import {
 import styles from "./bottomSheetDeleteProfile.style";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { BottomSheetBackdrop, BottomSheetModal } from "@gorhom/bottom-sheet";
+import {
+  BottomSheetBackdrop,
+  BottomSheetModal,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet";
 import { useCallback } from "react";
 // import { faCopy, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -36,25 +40,27 @@ const BottomSheetDeleteProfile = ({ bottomSheetModalRef, navigation }) => {
   return (
     <BottomSheetModal
       ref={bottomSheetModalRef}
-      snapPoints={["11%"]}
+      snapPoints={["20%"]}
       backdropComponent={renderBackdrop}
     >
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.optionContainer}
-          onPress={() => handleOpenDeleteProfileModal()}
-        >
-          <View style={styles.optionWrapper}>
-            <FontAwesomeIcon icon={faXmark} size={hp(3)} />
-            <View>
-              <Text style={styles.deleteProfileText}>Delete Profile</Text>
-              <Text style={styles.deleteProfileDescriptionText}>
-                This fill permanently delete your profile
-              </Text>
+      <BottomSheetView style={{ flex: 1, paddingBottom: hp(5) }}>
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.optionContainer}
+            onPress={() => handleOpenDeleteProfileModal()}
+          >
+            <View style={styles.optionWrapper}>
+              <FontAwesomeIcon icon={faXmark} size={hp(3)} />
+              <View>
+                <Text style={styles.deleteProfileText}>Delete Profile</Text>
+                <Text style={styles.deleteProfileDescriptionText}>
+                  This fill permanently delete your profile
+                </Text>
+              </View>
             </View>
-          </View>
-        </TouchableOpacity>
-      </View>
+          </TouchableOpacity>
+        </View>
+      </BottomSheetView>
     </BottomSheetModal>
   );
 };
