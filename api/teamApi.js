@@ -144,7 +144,7 @@ export const createTeam = async (datas) => {
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${datas.userToken}`,
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
     },
     data: datas.formData,
   };

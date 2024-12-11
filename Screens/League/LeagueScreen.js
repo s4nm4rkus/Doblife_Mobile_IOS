@@ -286,7 +286,7 @@ const LeagueScreen = ({ route, navigation }) => {
     };
 
     try {
-      await fetchLeagueSeasonCategoriesMutation({ params });
+      await fetchLeagueSeasonCategoriesMutation({ params, userToken });
     } catch (e) {
       console.log(e);
     }

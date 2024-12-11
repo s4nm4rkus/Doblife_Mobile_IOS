@@ -18,6 +18,7 @@ import SelectLeague from "../Screens/SelectLeague/SelectLeague";
 import SearchLeaguesScreen from "../Screens/Tabs/Leagues/search/SearchLeaguesScreen";
 import LeagueScreen from "../Screens/League/LeagueScreen";
 import ProfilesScreen from "../Screens/Menus/Profiles/ProfilesScreen";
+import ConfirmCreateTeamScreen from "../Screens/ConfirmCreateTeam/ConfirmCreateTeamScreen";
 
 import HeaderLeftButton from "../components/common/buttons/headerLeftButton/HeaderLeftButton";
 
@@ -75,6 +76,12 @@ const AppStack = () => (
     <Stack.Screen
       name="CreateTeam"
       component={CreateTeamScreen}
+      options={{ headerShown: false }}
+    />
+
+    <Stack.Screen
+      name="ConfirmCreateTeam"
+      component={ConfirmCreateTeamScreen}
       options={{ headerShown: false }}
     />
 
