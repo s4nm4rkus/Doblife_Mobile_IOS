@@ -30,6 +30,7 @@ import {
   setLeagueParticipantIDs,
   setTeam,
 } from "../../../../../../../features/leagueTeam/leagueTeamSlice";
+import { AuthContext } from "../../../../../../../context/AuthContext";
 
 const ParticipantsCard = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const ParticipantsCard = ({ navigation }) => {
   const leagueSeasonCategory = useSelector(leagueSeasonCategoryValue);
   const sortBy = useSelector(sortByValue);
   const [leagueParticipants, setLeagueParticipants] = useState([]);
+  const { userToken } = useContext(AuthContext);
 
   const { mutateAsync: fetchLeagueParticipantsMutation } = useMutation({
     mutationFn: fetchLeagueParticipants,
@@ -54,9 +56,9 @@ const ParticipantsCard = ({ navigation }) => {
       sortBy: sortBy,
     };
     try {
-      await fetchLeagueParticipantsMutation(params);
+      await fetchLeagueParticipantsMutation({ params, userToken });
     } catch (e) {
-      console.log(e);
+      console.error("Error fetching league participants:", e);
     }
   };
 

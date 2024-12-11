@@ -305,47 +305,50 @@ const Home = ({ navigation }) => {
                         {moment(item.created_at).format("MMMM D")}
                       </Text>
                     </View>
-                    <ViewShot
+                    {/* <ViewShot
                       ref={viewShotRef1}
                       options={{ format: "jpg", quality: 0.9 }}
                     >
-                      <View style={styles.cardBody}>
-                        <View style={styles.leagueNameContainer}>
-                          <Text style={styles.leagueNameText}>
-                            {item.league.name}
-                          </Text>
-                        </View>
-                        <View style={styles.openingDateContainer}>
-                          <Text style={styles.openingDateText}>
-                            {moment(item.opening_date).format("MMM D | h:mm A")}
-                          </Text>
-                        </View>
-                        {(item.location.barangay.name ||
-                          item.location.city.name ||
-                          item.location.province.name) && (
-                          <View style={styles.leagueAddressContainer}>
-                            <Text style={styles.addressText}>
-                              {item.location.barangay.name},{" "}
-                              {item.location.city.name},{" "}
-                              {item.location.province.name}
-                            </Text>
-                          </View>
-                        )}
+                      
+                    </ViewShot> */}
 
-                        {!checkProfileIdExists(item) ? (
-                          <TouchableOpacity
-                            style={styles.joinNowContainer}
-                            onPress={() => handleJoinNow(item)}
-                          >
-                            <Text style={styles.joinNowText}>JOIN NOW</Text>
-                          </TouchableOpacity>
-                        ) : (
-                          <View style={styles.joinNowContainer}>
-                            <Text style={styles.joinNowText}>JOINED</Text>
-                          </View>
-                        )}
+                    <View style={styles.cardBody}>
+                      <View style={styles.leagueNameContainer}>
+                        <Text style={styles.leagueNameText}>
+                          {item.league.name}
+                        </Text>
                       </View>
-                    </ViewShot>
+                      <View style={styles.openingDateContainer}>
+                        <Text style={styles.openingDateText}>
+                          {moment(item.opening_date).format("MMM D | h:mm A")}
+                        </Text>
+                      </View>
+                      {(item.location.barangay.name ||
+                        item.location.city.name ||
+                        item.location.province.name) && (
+                        <View style={styles.leagueAddressContainer}>
+                          <Text style={styles.addressText}>
+                            {item.location.barangay.name},{" "}
+                            {item.location.city.name},{" "}
+                            {item.location.province.name}
+                          </Text>
+                        </View>
+                      )}
+
+                      {!checkProfileIdExists(item) ? (
+                        <TouchableOpacity
+                          style={styles.joinNowContainer}
+                          onPress={() => handleJoinNow(item)}
+                        >
+                          <Text style={styles.joinNowText}>JOIN NOW</Text>
+                        </TouchableOpacity>
+                      ) : (
+                        <View style={styles.joinNowContainer}>
+                          <Text style={styles.joinNowText}>JOINED</Text>
+                        </View>
+                      )}
+                    </View>
+
                     <View style={styles.cardFooter}>
                       {/* <View>
                           <Text style={styles.reactsText}>0 Reacts ⋅ 0 Share</Text>
