@@ -19,6 +19,9 @@ import SearchLeaguesScreen from "../Screens/Tabs/Leagues/search/SearchLeaguesScr
 import LeagueScreen from "../Screens/League/LeagueScreen";
 import ProfilesScreen from "../Screens/Menus/Profiles/ProfilesScreen";
 import ConfirmCreateTeamScreen from "../Screens/ConfirmCreateTeam/ConfirmCreateTeamScreen";
+import FilterLeaguesScreen from "../Screens/Tabs/Leagues/filter/FilterLeaguesScreen";
+import FilterPlayersScreen from "../Screens/Tabs/Players/filter/FilterPlayersScreen";
+import FilterTeamsScreen from "../Screens/Tabs/Teams/filter/FilterTeamsScreen";
 
 import HeaderLeftButton from "../components/common/buttons/headerLeftButton/HeaderLeftButton";
 
@@ -130,6 +133,24 @@ const AppStack = () => (
         },
         headerShadowVisible: true,
       })}
+    />
+
+    <Stack.Screen
+      name="FilterLeagues"
+      component={FilterLeaguesScreen}
+      options={{ headerShown: false }}
+    />
+
+    <Stack.Screen
+      name="FilterPlayers"
+      component={FilterPlayersScreen}
+      options={{ headerShown: false }}
+    />
+
+    <Stack.Screen
+      name="FilterTeams"
+      component={FilterTeamsScreen}
+      options={{ headerShown: false }}
     />
 
     <Stack.Screen

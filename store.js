@@ -29,6 +29,7 @@ import leaguesEditDescriptionsSlice from "./features/leaguesEditDescriptions/lea
 import profileSlice from "./features/profile/profileSlice";
 import editPlayerDetailsSlice from "./features/profile/editPlayerDetails/editPlayerDetailsSlice";
 import editAddressSlice from "./features/profile/editAddress/editAddressSlice";
+import teamsFilterSlice from "./features/teamsFilter/teamsFilterSlice";
 
 export const store = configureStore({
   reducer: {
@@ -62,5 +63,6 @@ export const store = configureStore({
     profile: profileSlice,
     editPlayerDetails: editPlayerDetailsSlice,
     editAddress: editAddressSlice,
+    teamsFilter: teamsFilterSlice,
   },
 });

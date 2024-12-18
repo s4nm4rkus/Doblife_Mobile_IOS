@@ -9,6 +9,7 @@ export const fetchProvinces = async (countryID) => {
   };
 
   const response = await axios(config);
+  console.log("API Response:", response.data);
 
   return response.data;
 };

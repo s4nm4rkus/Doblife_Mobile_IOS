@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   league_date: null,
@@ -7,10 +7,10 @@ const initialState = {
   city_id: null,
   brgy_id: null,
   search: null,
-}
+};
 
 export const leaguesFilterSlice = createSlice({
-  name: 'leaguesFilter',
+  name: "leaguesFilter",
   initialState,
   reducers: {
     setLeagueDate: (state, action) => {
@@ -32,23 +32,23 @@ export const leaguesFilterSlice = createSlice({
       state.search = action.payload;
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { 
+export const {
   setLeagueDate,
   setSortBy,
   setProvinceID,
   setCityID,
   setBrgyID,
-  setSearch
-} = leaguesFilterSlice.actions
+  setSearch,
+} = leaguesFilterSlice.actions;
 
-export const leagueDateValue = state => state.leaguesFilter.league_date;
-export const sortByValue = state => state.leaguesFilter.sort_by;
-export const provinceIDValue = state => state.leaguesFilter.province_id;
-export const cityIDValue = state => state.leaguesFilter.city_id;
-export const brgyIDValue = state => state.leaguesFilter.brgy_id;
-export const searchValue = state => state.leaguesFilter.search;
+export const leagueDateValue = (state) => state.leaguesFilter.league_date;
+export const sortByValue = (state) => state.leaguesFilter.sort_by;
+export const provinceIDValue = (state) => state.leaguesFilter.province_id;
+export const cityIDValue = (state) => state.leaguesFilter.city_id;
+export const brgyIDValue = (state) => state.leaguesFilter.brgy_id;
+export const searchValue = (state) => state.leaguesFilter.search;
 
-export default leaguesFilterSlice.reducer
+export default leaguesFilterSlice.reducer;
